@@ -1,48 +1,58 @@
-# 📈 Linear Regression in Machine Learning
-
-> A comprehensive, detailed guide to Linear Regression — the most fundamental supervised learning algorithm — covering concepts, mathematics, all types, implementation, evaluation, and regularisation techniques.
-
-📖 **Reference:** [GeeksforGeeks — Linear Regression in Machine Learning](https://www.geeksforgeeks.org/machine-learning/ml-linear-regression/)
-
----
+# 🤖 Machine Learning Models and Their Types
 
 ## 📌 Table of Contents
 
 - [Overview](#-overview)
-- [What is Linear Regression?](#-what-is-linear-regression)
-- [Key Terminology](#-key-terminology)
-- [Best Fit Line](#-best-fit-line)
-  - [Goal of the Best-Fit Line](#1-goal-of-the-best-fit-line)
-  - [Equation of Best-Fit Line](#2-equation-of-the-best-fit-line)
-  - [Least Squares Method](#3-least-squares-method)
-  - [Interpretation of Slope and Intercept](#4-interpretation-of-slope-and-intercept)
-- [Hypothesis Function](#-hypothesis-function)
-- [Assumptions of Linear Regression](#-assumptions-of-linear-regression)
-- [Types of Linear Regression](#-types-of-linear-regression)
-  - [Type 1 — Simple Linear Regression](#-type-1--simple-linear-regression)
-  - [Type 2 — Multiple Linear Regression](#-type-2--multiple-linear-regression)
-  - [Type 3 — Polynomial Regression](#-type-3--polynomial-regression)
-  - [Type 4 — Ridge Regression (L2)](#-type-4--ridge-regression-l2)
-  - [Type 5 — Lasso Regression (L1)](#-type-5--lasso-regression-l1)
-  - [Type 6 — ElasticNet Regression](#-type-6--elasticnet-regression)
-  - [Type 7 — Bayesian Linear Regression](#-type-7--bayesian-linear-regression)
-  - [Type 8 — Quantile Regression](#-type-8--quantile-regression)
-  - [Type 9 — Robust Regression](#-type-9--robust-regression)
-  - [Type 10 — Stepwise Regression](#-type-10--stepwise-regression)
-- [Cost Function](#-cost-function)
-- [Gradient Descent](#-gradient-descent)
-  - [Types of Gradient Descent](#-types-of-gradient-descent)
-- [Full Python Implementation](#-full-python-implementation)
-  - [Simple Linear Regression](#1-simple-linear-regression-implementation)
-  - [Multiple Linear Regression](#2-multiple-linear-regression-implementation)
-- [Evaluation Metrics](#-evaluation-metrics)
-- [Regularisation Techniques — Summary](#-regularisation-techniques--summary)
-- [Bias-Variance Tradeoff](#-bias-variance-tradeoff)
-- [Advantages of Linear Regression](#-advantages-of-linear-regression)
-- [Limitations of Linear Regression](#-limitations-of-linear-regression)
-- [When to Use Linear Regression](#-when-to-use-linear-regression)
-- [Types Comparison Table](#-types-comparison-table)
-- [Decision Guide — Which Type to Use?](#-decision-guide--which-type-to-use)
+- [Machine Learning Landscape](#-machine-learning-landscape)
+- [Part 1 — Supervised Learning](#-part-1--supervised-learning)
+  - [What is Supervised Learning?](#-what-is-supervised-learning)
+  - [1.1 Regression Models](#11-regression-models)
+    - [Linear Regression](#1-linear-regression)
+    - [Ridge & Lasso Regression](#2-ridge--lasso-regression)
+    - [Polynomial Regression](#3-polynomial-regression)
+    - [Support Vector Regression (SVR)](#4-support-vector-regression-svr)
+  - [1.2 Classification Models](#12-classification-models)
+    - [Logistic Regression](#1-logistic-regression)
+    - [K-Nearest Neighbors (KNN)](#2-k-nearest-neighbors-knn)
+    - [Naive Bayes](#3-naive-bayes)
+    - [Support Vector Machine (SVM)](#4-support-vector-machine-svm)
+    - [Decision Tree](#5-decision-tree)
+  - [1.3 Ensemble Models](#13-ensemble-models)
+    - [Random Forest](#1-random-forest)
+    - [Gradient Boosting (GBM)](#2-gradient-boosting-gbm)
+    - [XGBoost](#3-xgboost)
+    - [LightGBM](#4-lightgbm)
+    - [AdaBoost](#5-adaboost)
+    - [Stacking & Voting](#6-stacking--voting)
+- [Part 2 — Unsupervised Learning](#-part-2--unsupervised-learning)
+  - [What is Unsupervised Learning?](#-what-is-unsupervised-learning)
+  - [2.1 Clustering Models](#21-clustering-models)
+    - [K-Means Clustering](#1-k-means-clustering)
+    - [Hierarchical Clustering](#2-hierarchical-clustering)
+    - [DBSCAN](#3-dbscan)
+    - [Gaussian Mixture Models (GMM)](#4-gaussian-mixture-models-gmm)
+  - [2.2 Dimensionality Reduction](#22-dimensionality-reduction)
+    - [PCA](#1-pca)
+    - [t-SNE](#2-t-sne)
+    - [UMAP](#3-umap)
+    - [Autoencoders](#4-autoencoders)
+  - [2.3 Association Rule Learning](#23-association-rule-learning)
+    - [Apriori](#1-apriori)
+    - [FP-Growth](#2-fp-growth)
+- [Part 3 — Semi-Supervised Learning](#-part-3--semi-supervised-learning)
+- [Part 4 — Self-Supervised Learning](#-part-4--self-supervised-learning)
+- [Part 5 — Reinforcement Learning](#-part-5--reinforcement-learning)
+- [Part 6 — Deep Learning Models](#-part-6--deep-learning-models)
+  - [Artificial Neural Network (ANN)](#1-artificial-neural-network-ann)
+  - [Convolutional Neural Network (CNN)](#2-convolutional-neural-network-cnn)
+  - [Recurrent Neural Network (RNN)](#3-recurrent-neural-network-rnn)
+  - [LSTM & GRU](#4-lstm--gru)
+  - [Transformer](#5-transformer)
+  - [Generative Adversarial Network (GAN)](#6-generative-adversarial-network-gan)
+- [Model Selection Guide](#-model-selection-guide)
+- [Algorithms by Problem Type](#-algorithms-by-problem-type)
+- [Comparison of All Models](#-comparison-of-all-models)
+- [Evaluation Metrics Quick Reference](#-evaluation-metrics-quick-reference)
 - [Key Takeaways](#-key-takeaways)
 - [Prerequisites](#-prerequisites)
 - [Further Reading](#-further-reading)
@@ -51,1191 +61,1705 @@
 
 ## 🧭 Overview
 
-Linear Regression is a **fundamental supervised learning algorithm** that models the relationship between a dependent variable (target) and one or more independent variables (features) by fitting the best possible straight line through the data.
-
-It is the **starting point for almost every ML practitioner** — simple enough to understand deeply, yet powerful enough to solve a wide range of real-world prediction problems.
+**Machine Learning (ML)** is a subset of Artificial Intelligence where systems learn patterns from data and improve their performance automatically — without being explicitly programmed for every scenario.
 
 ```
-         Salary (₹)
-            │                         ●
-            │                    ●
-       5L   │              ● Best-fit line
-            │         ●──────────────────
-       3L   │    ●
-            │●
-            └──────────────────────────── Experience (years)
-              1   2   3   4   5   6   7
-
-Goal: Find the line that best explains how salary
-      increases with years of experience.
+                         ARTIFICIAL INTELLIGENCE
+                                  │
+                         MACHINE LEARNING
+                    ┌─────────────┼─────────────┐
+             Supervised      Unsupervised   Reinforcement
+              Learning         Learning       Learning
+           ┌────┴─────┐      ┌──┴──────┐
+        Regression Classification Clustering Dim. Reduction
+                                │
+                        DEEP LEARNING
+              ┌──────┬──────┬──────┬──────┬──────┐
+             ANN    CNN    RNN   LSTM  Transformer GAN
 ```
 
 ---
 
-## 🔍 What is Linear Regression?
-
-Linear Regression is a fundamental supervised learning algorithm used to model the relationship between a **dependent variable** and one or more **independent variables**. It predicts continuous values by fitting a straight line that best represents the data.
-
-- Assumes a **linear relationship** between input and output
-- Uses a **best-fit line** to make predictions
-- Commonly used in forecasting, trend analysis, and predictive modelling
-
-**Real-world example:**
+## 🗺️ Machine Learning Landscape
 
 ```
-Problem: Predict a student's exam score based on hours studied.
-
-Observation: As students study more hours, their scores go up.
-
-  Independent variable (input)  → Hours studied  (X)
-  Dependent variable  (output)  → Exam score     (Y)
-
-As X increases, Y increases → linear positive relationship
+Machine Learning
+│
+├── SUPERVISED LEARNING          (labelled data — known outputs)
+│   ├── Regression               → predict continuous values
+│   │   ├── Linear Regression
+│   │   ├── Ridge / Lasso
+│   │   ├── Polynomial Regression
+│   │   └── Support Vector Regression
+│   ├── Classification           → predict discrete categories
+│   │   ├── Logistic Regression
+│   │   ├── K-Nearest Neighbors
+│   │   ├── Naive Bayes
+│   │   ├── Support Vector Machine
+│   │   └── Decision Tree
+│   └── Ensemble Methods         → combine multiple models
+│       ├── Random Forest
+│       ├── Gradient Boosting
+│       ├── XGBoost / LightGBM
+│       └── AdaBoost / Stacking
+│
+├── UNSUPERVISED LEARNING        (unlabelled data — discover patterns)
+│   ├── Clustering               → group similar data
+│   │   ├── K-Means
+│   │   ├── Hierarchical
+│   │   ├── DBSCAN
+│   │   └── GMM
+│   ├── Dimensionality Reduction → compress feature space
+│   │   ├── PCA
+│   │   ├── t-SNE / UMAP
+│   │   └── Autoencoders
+│   └── Association Rules        → find item co-occurrence patterns
+│       ├── Apriori
+│       └── FP-Growth
+│
+├── SEMI-SUPERVISED LEARNING     (small labelled + large unlabelled)
+│
+├── SELF-SUPERVISED LEARNING     (generate own supervision signals)
+│
+├── REINFORCEMENT LEARNING       (agent learns via rewards/penalties)
+│
+└── DEEP LEARNING                (multi-layer neural architectures)
+    ├── ANN / MLP
+    ├── CNN
+    ├── RNN / LSTM / GRU
+    ├── Transformer / BERT / GPT
+    └── GAN
 ```
 
 ---
 
-## 📖 Key Terminology
+## 🟢 Part 1 — Supervised Learning
 
-| Term | Symbol | Description |
+### 📌 What is Supervised Learning?
+
+Supervised learning trains models on **labelled datasets** where each input has a known corresponding output. The model learns the mapping `f(X) → y` so it can predict outputs for new, unseen inputs.
+
+```
+Training:
+  Input (X) + Known Label (y)  ──►  Learn mapping f(X) → y
+
+Prediction:
+  New Input (X_new)  ──►  f(X_new)  ──►  Predicted Output (ŷ)
+```
+
+| Type | Output | Example |
 |---|---|---|
-| **Dependent variable** | Y, ŷ | Target / output variable being predicted |
-| **Independent variable** | X | Input / predictor / feature variable |
-| **Intercept** | β₀ (theta_0) | Value of Y when all X = 0; where line crosses Y-axis |
-| **Slope / Coefficient** | β₁ (theta_1) | Change in Y per unit increase in X |
-| **Residual / Error** | εᵢ | Difference between actual and predicted: yᵢ − ŷᵢ |
-| **Best-fit line** | ŷ = β₀ + β₁x | The line that minimises total prediction error |
-| **Cost function (J)** | MSE | Measures how far predictions are from actual values |
-| **Gradient Descent** | — | Optimisation algorithm to minimise cost function |
-| **R² Score** | R² | Proportion of variance in Y explained by the model |
-| **Regularisation** | λ (lambda) | Penalty term added to prevent overfitting |
+| **Regression** | Continuous number | House price, temperature forecast |
+| **Classification** | Discrete category | Spam/not spam, disease diagnosis |
 
 ---
 
-## 📐 Best Fit Line
-
-### 1. Goal of the Best-Fit Line
-
-The goal of linear regression is to find a straight line that **minimises the error** (the difference) between the observed data points and the predicted values. This line helps predict the dependent variable for new, unseen data.
-
-```
-Data points vs. best-fit line:
-
-   Y │ ●  ← actual point
-     │  \  ← residual (error)
-     │   ×  ← predicted point on line
-     │    \_____________________
-     │                          Line (ŷ = β₀ + β₁x)
-     └─────────────────────── X
-
-Best-fit line minimises: Σ(yᵢ − ŷᵢ)²   ← Sum of Squared Residuals
-```
+## 1.1 Regression Models
 
 ---
 
-### 2. Equation of the Best-Fit Line
+### 1. Linear Regression
 
-For **Simple Linear Regression** (one independent variable):
+**The simplest and most foundational ML algorithm.** Finds the best-fit straight line through data by minimising the sum of squared errors between predictions and actual values.
 
-```
-ŷ = mx + b
-
-Where:
-  ŷ  = predicted value (dependent variable)
-  x  = input (independent variable)
-  m  = slope  → how much ŷ changes when x changes by 1
-  b  = intercept → value of ŷ when x = 0
-
-Also written as:
-  ŷ = β₀ + β₁x
-
-  β₀ = intercept
-  β₁ = slope (coefficient)
-```
-
-For **Multiple Linear Regression** (multiple independent variables):
-
-```
-ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ + ... + βₙxₙ
-
-Where:
-  x₁, x₂, ..., xₙ  = independent variables (features)
-  β₁, β₂, ..., βₙ  = coefficients (one per feature)
-  β₀               = intercept
-```
-
----
-
-### 3. Least Squares Method
-
-The **Ordinary Least Squares (OLS)** method finds the optimal β values by minimising the **Sum of Squared Residuals (SSR)**:
-
-```
-Residual for each point:
-  εᵢ = yᵢ − ŷᵢ = yᵢ − (β₀ + β₁xᵢ)
-
-Objective — minimise SSR:
-  SSR = Σᵢ(yᵢ − ŷᵢ)²
-      = Σᵢ(yᵢ − β₀ − β₁xᵢ)²
-
-Closed-form OLS solution:
-
-         Σ(xᵢ − x̄)(yᵢ − ȳ)
-  β₁ = ─────────────────────
-              Σ(xᵢ − x̄)²
-
-  β₀ = ȳ − β₁x̄
-
-Where x̄ = mean of X, ȳ = mean of Y
-```
-
-```python
-import numpy as np
-
-# OLS from scratch
-def ols_coefficients(X, y):
-    x_mean = np.mean(X)
-    y_mean = np.mean(y)
-
-    beta_1 = np.sum((X - x_mean) * (y - y_mean)) / np.sum((X - x_mean) ** 2)
-    beta_0 = y_mean - beta_1 * x_mean
-
-    return beta_0, beta_1
-
-X = np.array([1, 2, 3, 4, 5, 6, 7])
-y = np.array([1.5, 3.0, 4.5, 5.5, 7.0, 8.5, 9.5])
-
-b0, b1 = ols_coefficients(X, y)
-print(f"Intercept (β₀): {b0:.4f}")
-print(f"Slope     (β₁): {b1:.4f}")
-print(f"Equation : ŷ = {b0:.4f} + {b1:.4f}x")
-```
-
----
-
-### 4. Interpretation of Slope and Intercept
-
-```
-Example: ŷ = 1.2 + 5.0x
-  (predicting salary ₹L from years of experience)
-
-  Intercept (β₀ = 1.2):
-    → A person with 0 years of experience earns ₹1.2L
-    → Starting/base salary
-
-  Slope (β₁ = 5.0):
-    → For every 1 additional year of experience,
-      salary increases by ₹5.0L
-    → Rate of change
-```
-
-| Slope value | Meaning |
-|---|---|
-| **β₁ > 0** | Positive relationship — Y increases as X increases |
-| **β₁ < 0** | Negative relationship — Y decreases as X increases |
-| **β₁ = 0** | No linear relationship between X and Y |
-| **\|β₁\| large** | Steep slope — X has strong influence on Y |
-| **\|β₁\| small** | Flat slope — X has weak influence on Y |
-
----
-
-## 🔧 Hypothesis Function
-
-In linear regression, the **hypothesis function** is the equation used to make predictions about the dependent variable based on independent variables.
-
-**Simple Linear Regression (1 feature):**
-```
-h(x) = β₀ + β₁x
-
-Where:
-  h(x) or ŷ = predicted output
-  x          = single input feature
-  β₀         = intercept (value of ŷ when x = 0)
-  β₁         = slope (rate of change of ŷ per unit of x)
-```
-
-**Multiple Linear Regression (k features):**
-```
-h(x₁, x₂, ..., xₖ) = β₀ + β₁x₁ + β₂x₂ + ... + βₖxₖ
-
-In matrix notation:
-  ŷ = Xβ
-
-Where:
-  X  = feature matrix (n_samples × n_features)
-  β  = coefficient vector (n_features × 1)
-  ŷ  = prediction vector (n_samples × 1)
-```
-
----
-
-## ✅ Assumptions of Linear Regression
-
-Linear regression relies on **7 key assumptions**. Violating them can make results unreliable.
-
----
-
-### 1. Linearity
-
-The relationship between each independent variable X and the dependent variable Y must be **linear** — a straight-line relationship.
-
-```
-    Valid (linear):       Not valid (non-linear):
-    Y│   /                Y│    ●●
-     │  /                  │  ●    ●
-     │ /                   │●        ●
-     └──── X               └──────── X
-
-    Residual plot check: residuals should scatter randomly
-    around zero with no curved pattern
-```
-
-```python
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Check linearity via scatter plot of each feature vs target
-fig, axes = plt.subplots(1, 3, figsize=(15, 4))
-for i, col in enumerate(['feature1', 'feature2', 'feature3']):
-    axes[i].scatter(df[col], df['target'], alpha=0.5)
-    axes[i].set_xlabel(col)
-    axes[i].set_ylabel('target')
-    axes[i].set_title(f'{col} vs target')
-plt.tight_layout()
-plt.show()
-```
-
----
-
-### 2. Independence of Errors
-
-The residuals (errors) for each observation should be **independent** of each other — knowing one error gives no information about another.
-
-```
-Valid:                    Not valid (autocorrelation):
-Residuals │ ● ●  ●         Residuals │ ●●●●
-          │●  ●  ●●                   │       ●●●●
-          │  ●●●                      │           ●●●●
-          └──────── x                └────────────── x
-          (scattered randomly)       (clear pattern = problem)
-```
-
-```python
-from statsmodels.stats.stattools import durbin_watson
-
-# Durbin-Watson test for autocorrelation
-# Value ≈ 2 → no autocorrelation | <1 or >3 → problem
-residuals = y_test - y_pred
-dw_stat = durbin_watson(residuals)
-print(f"Durbin-Watson: {dw_stat:.4f}")
-# Near 2.0 = good, <1.5 or >2.5 = autocorrelation present
-```
-
----
-
-### 3. Homoscedasticity (Constant Variance of Errors)
-
-The spread of residuals should remain **constant** across all values of X.
-
-```
-Valid (homoscedastic):    Not valid (heteroscedastic):
-Residuals │ ● ● ● ●        Residuals │         ●●●
-          │● ● ● ●●                  │      ●●●
-          │ ● ● ● ●                  │   ●●
-          └──────── ŷ                └────────── ŷ
-          (equal spread)             (fan shape = problem)
-```
-
-```python
-# Check with residual vs fitted plot
-plt.figure(figsize=(8, 5))
-plt.scatter(y_pred, residuals, alpha=0.5, color='steelblue')
-plt.axhline(0, color='red', linestyle='--')
-plt.xlabel('Fitted Values (ŷ)')
-plt.ylabel('Residuals')
-plt.title('Residuals vs Fitted — Check for Homoscedasticity')
-plt.show()
-```
-
----
-
-### 4. Normality of Errors
-
-The residuals should follow a **normal (bell-curve) distribution** with mean zero.
-
-```
-Valid (normal errors):
-        ████
-      ██████████
-    ██████████████
-  ████████████████████
-─────────────────────── residuals
-   -3σ  -2σ  0  +2σ  +3σ
-```
-
-```python
-from scipy import stats
-import matplotlib.pyplot as plt
-
-# Q-Q Plot — points should fall on diagonal line
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
-
-# Histogram of residuals
-ax1.hist(residuals, bins=20, color='steelblue', edgecolor='white')
-ax1.set_title('Histogram of Residuals')
-ax1.set_xlabel('Residuals')
-
-# Q-Q Plot
-stats.probplot(residuals, dist='norm', plot=ax2)
-ax2.set_title('Q-Q Plot')
-plt.tight_layout()
-plt.show()
-
-# Shapiro-Wilk test for normality
-stat, p = stats.shapiro(residuals)
-print(f"Shapiro-Wilk p-value: {p:.4f}")
-print("Normal" if p > 0.05 else "Not Normal — check distribution")
-```
-
----
-
-### 5. No Multicollinearity (Multiple Regression)
-
-Independent variables should **not be highly correlated** with each other. High correlation makes coefficients unstable and hard to interpret.
-
-```python
-import pandas as pd
-import seaborn as sns
-
-# Correlation heatmap — values close to ±1 between features = problem
-corr_matrix = df[feature_cols].corr()
-plt.figure(figsize=(10, 8))
-sns.heatmap(corr_matrix, annot=True, fmt='.2f', cmap='coolwarm',
-            center=0, vmin=-1, vmax=1)
-plt.title('Feature Correlation Heatmap — Check for Multicollinearity')
-plt.show()
-
-# VIF (Variance Inflation Factor)
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-import statsmodels.api as sm
-
-X_with_const = sm.add_constant(X)
-vif_data = pd.DataFrame({
-    'Feature': X.columns,
-    'VIF'    : [variance_inflation_factor(X_with_const.values, i+1)
-                for i in range(len(X.columns))]
-})
-print(vif_data)
-# VIF > 10 → serious multicollinearity problem
-# VIF > 5  → moderate concern
-```
-
----
-
-### 6. No Autocorrelation
-
-Errors should not show **repeating patterns over time** (especially important for time-series data).
-
----
-
-### 7. Additivity
-
-The total effect on Y is the **sum of individual effects** from each X. No interaction terms are assumed in simple linear regression.
-
----
-
-### Assumptions Summary Table
-
-| Assumption | Check Method | Fix if Violated |
-|---|---|---|
-| **Linearity** | Scatter plot, residual plot | Transform features (log, sqrt) |
-| **Independence** | Durbin-Watson test | Use time-series models |
-| **Homoscedasticity** | Residuals vs fitted plot | Log-transform Y; use WLS |
-| **Normality of errors** | Q-Q plot, Shapiro-Wilk | Transform Y; use robust regression |
-| **No multicollinearity** | Correlation matrix, VIF | Remove/combine features; use Ridge |
-| **No autocorrelation** | Durbin-Watson, ACF plot | Add lag features; use ARIMA |
-| **Additivity** | Domain knowledge | Add interaction terms explicitly |
-
----
-
-## 📚 Types of Linear Regression
-
----
-
-## 📌 Type 1 — Simple Linear Regression
-
-**The most basic form of linear regression** with exactly **one independent variable** predicting one dependent variable.
-
-```
-ŷ = β₀ + β₁x
-
-Use case: Predict salary (y) from years of experience (x)
-```
-
-```
-     Salary
-        │              ●
-        │          ●●
-        │       ●          Best-fit line: ŷ = β₀ + β₁x
-        │   ● ●
-        │●
-        └──────────────────── Experience
-```
-
-### Python Implementation
-
-```python
-from sklearn.linear_model import LinearRegression
-```
-
-| ✅ Pros | ❌ Cons |
-|---|---|
-| Extremely simple and interpretable | Only works for one input feature |
-| Fast to train and predict | Cannot model complex patterns |
-| Easy to visualise | Assumes perfect linear relationship |
-
-**Best for:** Sales vs. advertising spend, temperature vs. ice cream sales, height vs. weight prediction
-
----
-
-## 📌 Type 2 — Multiple Linear Regression
-
-Extends Simple LR to handle **two or more independent variables** simultaneously.
-
+**Formula:**
 ```
 ŷ = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ
 
-Use case: Predict house price using size, bedrooms, location, age
+Where:
+  ŷ  = predicted value
+  β₀ = intercept (bias)
+  β₁ ... βₙ = coefficients (weights)
+  x₁ ... xₙ = input features
 ```
 
+**How it works:**
 ```
-House Price = β₀ + β₁(Size) + β₂(Bedrooms) + β₃(Location_Score) + β₄(Age)
-
-            Features (X)               Target (y)
-  ┌──────┬──────────┬──────────────┐    ┌───────────┐
-  │ Size │ Bedrooms │ Loc_Score    │ ─► │ Price ($) │
-  │  800 │     2    │    7.5       │    │  320,000  │
-  │ 1200 │     3    │    8.2       │    │  480,000  │
-  │  950 │     2    │    6.0       │    │  350,000  │
-  └──────┴──────────┴──────────────┘    └───────────┘
+Actual data:              Best-fit line:
+  ●                         /
+    ●     ●             ── /── minimise distance between
+      ●       ●          /     each point and the line
+          ●          ── /      (least squares method)
 ```
-
-### Python Implementation
 
 ```python
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
+
+# Sample data
+X = np.array([[1], [2], [3], [4], [5], [6], [7], [8]])
+y = np.array([2.1, 3.9, 6.2, 7.8, 10.1, 11.9, 14.2, 16.0])
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.25, random_state=42
+)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+print(f"Intercept    : {model.intercept_:.4f}")
+print(f"Coefficient  : {model.coef_[0]:.4f}")
+print(f"R² Score     : {r2_score(y_test, y_pred):.4f}")
+print(f"MSE          : {mean_squared_error(y_test, y_pred):.4f}")
 ```
 
 | ✅ Pros | ❌ Cons |
 |---|---|
-| Handles multiple features | Assumes linear relationship with each feature |
-| Captures combined effects of features | Risk of multicollinearity |
-| Interpretable per-feature coefficients | Performance degrades with irrelevant features |
+| Simple, fast, interpretable | Assumes linear relationship |
+| Works well when relationship is linear | Sensitive to outliers |
+| Low computational cost | Cannot capture complex patterns |
 
-**Best for:** Real estate pricing, financial forecasting, crop yield estimation, e-commerce sales analysis
+**Best for:** House price prediction, sales forecasting, trend analysis
 
 ---
 
-## 📌 Type 3 — Polynomial Regression
+### 2. Ridge & Lasso Regression
 
-Extends linear regression to capture **non-linear (curved) relationships** by adding polynomial terms (x², x³, ...) as new features.
+**Regularised versions of Linear Regression** that add a penalty term to prevent overfitting. Essential when the dataset has many features or multicollinearity.
+
+**Formulas:**
+```
+Linear Regression : minimise  Σ(yᵢ - ŷᵢ)²
+
+Ridge (L2)        : minimise  Σ(yᵢ - ŷᵢ)² + λ·Σβⱼ²
+                              (shrinks all coefficients toward zero)
+
+Lasso (L1)        : minimise  Σ(yᵢ - ŷᵢ)² + λ·Σ|βⱼ|
+                              (can shrink coefficients to exactly zero
+                               → automatic feature selection!)
+
+ElasticNet        : minimise  Σ(yᵢ - ŷᵢ)² + λ₁·Σ|βⱼ| + λ₂·Σβⱼ²
+                              (combines both L1 and L2)
+```
+
+```python
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+
+# Ridge
+ridge = Pipeline([
+    ('scaler', StandardScaler()),
+    ('model',  Ridge(alpha=1.0))
+])
+ridge.fit(X_train, y_train)
+
+# Lasso — also performs feature selection
+lasso = Pipeline([
+    ('scaler', StandardScaler()),
+    ('model',  Lasso(alpha=0.1))
+])
+lasso.fit(X_train, y_train)
+
+# ElasticNet — combines Ridge + Lasso
+elastic = Pipeline([
+    ('scaler', StandardScaler()),
+    ('model',  ElasticNet(alpha=0.1, l1_ratio=0.5))
+])
+elastic.fit(X_train, y_train)
+```
+
+| Model | Penalty | Feature Selection | Best For |
+|---|---|---|---|
+| **Ridge** | L2 (sum of squares) | No — shrinks all | Multicollinear data |
+| **Lasso** | L1 (sum of absolutes) | Yes — zeros out some | High-dimensional, sparse |
+| **ElasticNet** | L1 + L2 | Partial | Grouped correlated features |
+
+---
+
+### 3. Polynomial Regression
+
+**Extends Linear Regression** to model non-linear relationships by adding polynomial terms.
 
 ```
 ŷ = β₀ + β₁x + β₂x² + β₃x³ + ... + βₙxⁿ
-
-Despite having x², x³ terms — it is still called LINEAR regression
-because it is linear with respect to the COEFFICIENTS (β values).
 ```
-
-```
-     Simple (degree=1):        Polynomial (degree=2):
-     Y │    /                  Y │    ╭────
-       │   /                     │   ╱
-       │  /                      │  ╱
-       │ /                       │ ╱
-       └───── X                  └────── X
-       (straight line)           (parabola — degree 2)
-```
-
-### Python Implementation
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import Pipeline
+
+poly_model = Pipeline([
+    ('poly',   PolynomialFeatures(degree=3, include_bias=False)),
+    ('scaler', StandardScaler()),
+    ('model',  LinearRegression())
+])
+poly_model.fit(X_train, y_train)
+print(f"R² (degree 3): {poly_model.score(X_test, y_test):.4f}")
 ```
 
-> ⚠️ **Degree warning:**
-> - **Degree 1** = linear (may underfit)
-> - **Degree 2–3** = good balance for most curved data
-> - **Degree 5+** = high risk of overfitting — always cross-validate
-
-| ✅ Pros | ❌ Cons |
-|---|---|
-| Captures non-linear patterns | High degrees overfit easily |
-| Still uses linear model (interpretable β) | Hard to interpret high-degree coefficients |
-| Flexible — any curve shape possible | Extrapolation is unreliable beyond data range |
-
-**Best for:** Growth curves, biological phenomena, physics simulations, seasonal patterns
+> ⚠️ High degree polynomials easily overfit — always validate with cross-validation.
 
 ---
 
-## 📌 Type 4 — Ridge Regression (L2)
+### 4. Support Vector Regression (SVR)
 
-Ridge Regression adds an **L2 regularisation penalty** (sum of squared coefficients) to the cost function to prevent overfitting and handle multicollinearity.
-
-```
-Ridge Cost Function:
-
-  J(β) = Σ(yᵢ − ŷᵢ)² + λ · Σβⱼ²
-          ─────────────   ────────
-          OLS loss term   L2 penalty
-
-  λ (alpha) = regularisation strength
-    λ = 0  → same as OLS (no regularisation)
-    λ → ∞  → all coefficients shrink toward zero (but never exactly zero)
-```
-
-```
-Effect on coefficients:
-  Without Ridge: β = [25.3, -18.7, 42.1, -31.5]   ← large, unstable
-  With Ridge:    β = [ 8.2,  -6.1, 14.3,  -9.8]   ← smaller, stable
-  All shrunk toward 0, but none reach exactly 0
-```
-
-### Python Implementation
+Finds a hyperplane that fits the data within a specified **ε-margin** (epsilon tube). Robust to outliers — only data points outside the margin (support vectors) affect the model.
 
 ```python
-from sklearn.linear_model import Ridge, RidgeCV
+from sklearn.svm import SVR
+
+svr = Pipeline([
+    ('scaler', StandardScaler()),
+    ('model',  SVR(kernel='rbf', C=100, gamma=0.1, epsilon=0.1))
+])
+svr.fit(X_train, y_train)
+print(f"SVR R²: {svr.score(X_test, y_test):.4f}")
 ```
-
-| ✅ Pros | ❌ Cons |
-|---|---|
-| Reduces overfitting | Does not perform feature selection |
-| Stabilises coefficients with multicollinearity | Adds hyperparameter (λ) to tune |
-| All features are kept (useful if all matter) | Less interpretable than OLS |
-
-**Best for:** Datasets with many correlated features, genomics, finance with correlated indicators
 
 ---
 
-## 📌 Type 5 — Lasso Regression (L1)
-
-Lasso (**L**east **A**bsolute **S**hrinkage and **S**election **O**perator) adds an **L1 penalty** (sum of absolute coefficients). Uniquely, Lasso can shrink coefficients to **exactly zero** — performing automatic **feature selection**.
-
-```
-Lasso Cost Function:
-
-  J(β) = Σ(yᵢ − ŷᵢ)² + λ · Σ|βⱼ|
-          ─────────────   ──────────
-          OLS loss term   L1 penalty (absolute values)
-
-Key difference from Ridge:
-  L1 penalty can zero out coefficients completely → feature selection!
-```
-
-```
-Effect on coefficients:
-  Without Lasso: β = [25.3, -18.7, 42.1, -31.5, 0.8, -0.3]
-  With Lasso:    β = [12.1,  -8.4, 18.7,  -0.0, 0.0,  0.0]
-                                           ↑   eliminated features!
-```
-
-### Python Implementation
-
-```python
-from sklearn.linear_model import Lasso, LassoCV
-```
-
-| ✅ Pros | ❌ Cons |
-|---|---|
-| Automatic feature selection (zeros out irrelevant) | May arbitrarily drop one of several correlated features |
-| Produces sparse, interpretable models | Not ideal when all features are equally relevant |
-| Great for high-dimensional data | Less stable than Ridge for multicollinear data |
-
-**Best for:** High-dimensional datasets, genomics, text analysis, sparse data where few features matter
+## 1.2 Classification Models
 
 ---
 
-## 📌 Type 6 — ElasticNet Regression
+### 1. Logistic Regression
 
-ElasticNet is a **hybrid regularisation** technique that **combines both L1 (Lasso) and L2 (Ridge) penalties**. It inherits the feature selection of Lasso and the stability of Ridge.
+Despite its name, **Logistic Regression is a classification algorithm**. It estimates the probability of a data point belonging to a class using the **sigmoid function**, outputting values between 0 and 1.
 
+**Formula:**
 ```
-ElasticNet Cost Function:
+         1
+P(y=1) = ─────────────
+          1 + e^-(β₀ + β₁x₁ + ... + βₙxₙ)
 
-  J(β) = Σ(yᵢ − ŷᵢ)² + λ₁·Σ|βⱼ| + λ₂·Σβⱼ²
-          ─────────────  ──────────  ─────────
-          OLS loss       L1 penalty  L2 penalty
-                         (Lasso)     (Ridge)
-
-l1_ratio parameter:
-  l1_ratio = 1.0 → pure Lasso
-  l1_ratio = 0.0 → pure Ridge
-  l1_ratio = 0.5 → equal mix (default in sklearn)
+          Sigmoid function maps any value → (0, 1)
+          Threshold: P ≥ 0.5 → Class 1 | P < 0.5 → Class 0
 ```
-
-### Python Implementation
 
 ```python
-from sklearn.linear_model import ElasticNet, ElasticNetCV
-```
+from sklearn.linear_model import LogisticRegression
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import classification_report, confusion_matrix
 
-| Model | Penalty | Feature Selection | Grouped Features | Best For |
-|---|---|---|---|---|
-| **Ridge** | L2 (squared) | ❌ No | Shrinks together | Multicollinear, all features relevant |
-| **Lasso** | L1 (absolute) | ✅ Yes (zeros out) | Picks one randomly | Sparse, high-dimensional |
-| **ElasticNet** | L1 + L2 | ✅ Partial | Groups and selects | Correlated + sparse features |
+# Load dataset
+data = load_breast_cancer()
+X, y = data.data, data.target
 
----
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
-## 📌 Type 7 — Bayesian Linear Regression
+# Pipeline: scale → classify
+model = Pipeline([
+    ('scaler', StandardScaler()),
+    ('clf',    LogisticRegression(
+                    C=1.0,             # inverse regularisation strength
+                    max_iter=1000,
+                    solver='lbfgs',
+                    multi_class='auto'
+               ))
+])
 
-A **probabilistic approach** to linear regression that treats coefficients as **random variables with probability distributions** rather than fixed values. Uses Bayes' theorem to update beliefs about parameters as new data arrives.
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
 
-```
-Classical LR:
-  Find single "best" β values
-  ŷ = β₀ + β₁x  (point estimate)
-
-Bayesian LR:
-  Find probability distribution over β values
-  P(β | X, y) ∝ P(y | X, β) × P(β)
-  ─────────────  ──────────────  ────
-  posterior      likelihood      prior
-  (updated belief) (data fit)   (initial belief)
-
-Output: not just ŷ, but a distribution with uncertainty bounds
-```
-
-### Python Implementation
-
-```python
-from sklearn.linear_model import BayesianRidge
+print(classification_report(y_test, y_pred,
+      target_names=data.target_names))
 ```
 
 | ✅ Pros | ❌ Cons |
 |---|---|
-| Provides uncertainty estimates | Computationally more expensive |
-| Robust to overfitting (prior acts as regularisation) | Requires specifying prior distributions |
-| Works well with small datasets | Harder to interpret than classical LR |
-| Naturally handles missing data | Results depend on prior choice |
+| Probabilistic output (0–1) | Assumes linear decision boundary |
+| Interpretable coefficients | Poor on complex non-linear data |
+| Fast training and prediction | Sensitive to multicollinearity |
 
-**Best for:** Medical decision-making, finance risk models, small datasets, scenarios requiring confidence intervals
-
----
-
-## 📌 Type 8 — Quantile Regression
-
-Instead of predicting the **conditional mean** (like OLS), Quantile Regression predicts any **conditional quantile** of Y — the median (q=0.5), 90th percentile (q=0.9), etc.
-
-```
-OLS Linear Regression:     predicts the MEAN of y given x
-Quantile Regression:       predicts any PERCENTILE of y given x
-
-Example: Predicting salaries
-  OLS result:         ŷ = $65,000  (average salary)
-  Quantile q=0.90:    ŷ = $95,000  (90th percentile salary)
-  Quantile q=0.10:    ŷ = $42,000  (10th percentile salary)
-
-Useful when:
-  - Data is skewed
-  - You care about extremes (risks)
-  - Outliers are present
-```
-
-### Python Implementation
-
-```python
-# pip install statsmodels
-import statsmodels.formula.api as smf
-```
-
-**Best for:** Income prediction, insurance premium calculation, risk quantification, skewed or heteroscedastic data
+**Best for:** Binary/multi-class classification, credit risk, medical diagnosis, spam detection
 
 ---
 
-## 📌 Type 9 — Robust Regression
+### 2. K-Nearest Neighbors (KNN)
 
-Standard linear regression is sensitive to **outliers**. Robust Regression methods use **loss functions that down-weight the influence of outliers**, making the model more reliable when extreme values are present.
-
-```
-OLS Loss:      L(ε) = ε²          ← small errors: small loss
-                                    large errors: VERY large loss (squared!)
-
-Huber Loss:    L(ε) = ε²           if |ε| ≤ δ  (quadratic for small errors)
-                     δ(|ε| - δ/2)  if |ε| > δ  (linear for large errors)
-
-Effect: outliers penalised less → they have less influence on the model
-```
-
-### Python Implementation
-
-```python
-from sklearn.linear_model import HuberRegressor, TheilSenRegressor, RANSACRegressor
----
-
-## 📌 Type 10 — Stepwise Regression
-
-An automated process of **iteratively adding or removing features** based on statistical significance (p-values or AIC/BIC) to find the optimal subset of predictors.
+A **non-parametric, instance-based** algorithm. Classifies a new point by finding the k closest training examples and taking a **majority vote** (classification) or **average** (regression).
 
 ```
-Three approaches:
-  Forward Selection:   Start empty → add features one by one
-                       (keep if p-value < threshold)
+New point ★ → find k=3 nearest neighbours:
+  ● ● ○
+  ↑ ↑ ↑
+  1 2 3   → majority = ● → classify as ●
 
-  Backward Elimination: Start with all → remove features one by one
-                        (drop if p-value > threshold)
-
-  Bidirectional:       Combination of both — add and remove at each step
-```
-
-### Python Implementation
-
-```python
-import statsmodels.api as sm
-import pandas as pd
-import numpy as np
-
-def backward_elimination(X, y, significance=0.05):
-    """
-    Backward elimination: remove features with p-value > significance
-    until all remaining features are statistically significant.
-    """
-    features = list(X.columns)
-    while True:
-        X_const = sm.add_constant(X[features])
-        model   = sm.OLS(y, X_const).fit()
-        p_values = model.pvalues.drop('const')
-        max_p    = p_values.max()
-
-        if max_p > significance:
-            worst_feature = p_values.idxmax()
-            features.remove(worst_feature)
-            print(f"Removed '{worst_feature}' (p={max_p:.4f})")
-        else:
-            break
-
-    print(f"\nFinal features: {features}")
-    final_model = sm.OLS(y, sm.add_constant(X[features])).fit()
-    print(final_model.summary())
-    return final_model, features
-
-
-# Run backward elimination
-final_model, selected_features = backward_elimination(X, y)
-```
-
-**Best for:** Exploratory analysis, building parsimonious models, identifying the key predictors
-
----
-
-## 💰 Cost Function
-
-The **cost function J(β)** measures how far the model's predictions are from the actual values. The goal of training is to find β values that **minimise J**.
-
-```
-Mean Squared Error (MSE) — most common cost function:
-
-        1   n
-J(β) = ─── Σ (ŷᵢ − yᵢ)²
-        n  i=1
-
-Where:
-  ŷᵢ = β₀ + β₁xᵢ  (predicted value)
-  yᵢ               (actual value)
-  n                (number of samples)
-
-Why squared?
-  → Penalises large errors more heavily
-  → Always positive (no cancellation)
-  → Differentiable (needed for gradient descent)
+Distance metric (default): Euclidean
+  d = √[(x₁-x₂)² + (y₁-y₂)²]
 ```
 
 ```python
-import numpy as np
-
-def compute_cost(X, y, beta_0, beta_1):
-    """Compute MSE cost function for given parameters."""
-    n      = len(y)
-    y_pred = beta_0 + beta_1 * X
-    cost   = (1 / n) * np.sum((y_pred - y) ** 2)
-    return cost
-
-# Example
-X = np.array([1, 2, 3, 4, 5])
-y = np.array([2, 4, 5, 4, 5])
-
-print(f"Cost (β₀=0, β₁=1): {compute_cost(X, y, 0, 1):.4f}")
-print(f"Cost (β₀=1, β₁=1): {compute_cost(X, y, 1, 1):.4f}")
-print(f"Cost (β₀=0, β₁=0): {compute_cost(X, y, 0, 0):.4f}")
-```
-
----
-
-## 📉 Gradient Descent
-
-**Gradient Descent** is the optimisation algorithm that finds the β values minimising the cost function by taking iterative steps in the direction of steepest descent.
-
-```
-Algorithm:
-  1. Start with random β₀, β₁
-  2. Calculate cost J(β)
-  3. Compute partial derivatives (gradients):
-       ∂J/∂β₀ and ∂J/∂β₁
-  4. Update parameters:
-       β₀ := β₀ − α · ∂J/∂β₀
-       β₁ := β₁ − α · ∂J/∂β₁
-  5. Repeat until convergence (cost stops decreasing)
-
-  α = learning rate  (step size)
-```
-
-### Gradient Descent Update Rules
-
-```
-∂J/∂β₀ = (2/n) · Σ(ŷᵢ − yᵢ)
-
-∂J/∂β₁ = (2/n) · Σ(ŷᵢ − yᵢ) · xᵢ
-
-Update:
-  β₀ := β₀ − α · (2/n) · Σ(ŷᵢ − yᵢ)
-  β₁ := β₁ − α · (2/n) · Σ(ŷᵢ − yᵢ) · xᵢ
-```
-
-### Python — Gradient Descent from Scratch
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-def gradient_descent(X, y, learning_rate=0.01, n_iterations=1000):
-    n    = len(y)
-    b0   = 0.0    # intercept
-    b1   = 0.0    # slope
-    cost_history = []
-
-    for i in range(n_iterations):
-        y_pred = b0 + b1 * X
-        error  = y_pred - y
-
-        # Gradients
-        db0 = (2/n) * np.sum(error)
-        db1 = (2/n) * np.sum(error * X)
-
-        # Update
-        b0 -= learning_rate * db0
-        b1 -= learning_rate * db1
-
-        # Track cost
-        cost = (1/n) * np.sum(error ** 2)
-        cost_history.append(cost)
-
-    return b0, b1, cost_history
-
-# ── Example ───────────────────────────────────────────────────
-np.random.seed(42)
-X = np.random.rand(100) * 10
-y = 2.5 * X + 1.5 + np.random.randn(100) * 2.0
-
-b0, b1, history = gradient_descent(X, y,
-                                    learning_rate=0.005,
-                                    n_iterations=2000)
-
-print(f"Learned β₀ (intercept): {b0:.4f}")
-print(f"Learned β₁ (slope)    : {b1:.4f}")
-print(f"Final cost (MSE)      : {history[-1]:.6f}")
-
-# Plot cost convergence
-plt.figure(figsize=(9, 4))
-plt.plot(history, color='steelblue', linewidth=1.5)
-plt.xlabel('Iterations')
-plt.ylabel('Cost (MSE)')
-plt.title('Gradient Descent — Cost Convergence')
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.show()
-```
-
----
-
-### 📌 Types of Gradient Descent
-
-| Type | Data per Update | Speed | Noise | Best For |
-|---|---|---|---|---|
-| **Batch GD** | Entire dataset | Slow | Low | Small datasets — smooth convergence |
-| **Stochastic GD (SGD)** | 1 random sample | Very fast | High | Very large datasets |
-| **Mini-Batch GD** | Small batch (32–256) | Fast | Medium | Standard choice for most problems |
-
-```python
-from sklearn.linear_model import SGDRegressor
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 
-# Mini-batch SGD (via scikit-learn)
-sgd = Pipeline([
+knn_pipeline = Pipeline([
     ('scaler', StandardScaler()),
-    ('model',  SGDRegressor(
-                   loss='squared_error',    # OLS loss
-                   max_iter=1000,
-                   tol=1e-4,
-                   learning_rate='invscaling',
-                   eta0=0.01,
-                   random_state=42
-               ))
+    ('knn',    KNeighborsClassifier())
 ])
-sgd.fit(X_train, y_train)
-print(f"SGD R²: {sgd.score(X_test, y_test):.4f}")
+
+# Find optimal k via grid search
+param_grid = {'knn__n_neighbors': range(1, 21, 2)}
+grid = GridSearchCV(knn_pipeline, param_grid, cv=5, scoring='accuracy')
+grid.fit(X_train, y_train)
+
+print(f"Best k    : {grid.best_params_['knn__n_neighbors']}")
+print(f"Best score: {grid.best_score_*100:.2f}%")
+print(f"Test score: {grid.score(X_test, y_test)*100:.2f}%")
 ```
 
----
----
-
-## 📊 Evaluation Metrics
-
-| Metric | Formula | Range | Interpretation |
-|---|---|---|---|
-| **MAE** | Σ\|yᵢ−ŷᵢ\|/n | 0 to ∞ | Average absolute error — same unit as y |
-| **MSE** | Σ(yᵢ−ŷᵢ)²/n | 0 to ∞ | Penalises large errors more (squared) |
-| **RMSE** | √MSE | 0 to ∞ | Interpretable — same unit as y; sensitive to outliers |
-| **R²** | 1 − SS_res/SS_tot | -∞ to 1 | 1 = perfect; 0 = no better than mean; <0 = worse than mean |
-| **Adjusted R²** | 1 − (1−R²)(n−1)/(n−k−1) | -∞ to 1 | Penalises for adding irrelevant features |
-
-```python
-from sklearn.metrics import (mean_absolute_error, mean_squared_error, r2_score)
-import numpy as np
-
-def regression_metrics(y_true, y_pred, n_features, label="Model"):
-    """Print comprehensive regression evaluation metrics."""
-    n   = len(y_true)
-    mae = mean_absolute_error(y_true, y_pred)
-    mse = mean_squared_error(y_true, y_pred)
-    rmse = np.sqrt(mse)
-    r2   = r2_score(y_true, y_pred)
-    adj_r2 = 1 - (1 - r2) * (n - 1) / (n - n_features - 1)
-
-    print(f"\n── {label} Evaluation ─────────────────────")
-    print(f"  MAE         : {mae:.4f}")
-    print(f"  MSE         : {mse:.4f}")
-    print(f"  RMSE        : {rmse:.4f}")
-    print(f"  R² Score    : {r2:.4f}  ({r2*100:.1f}% variance explained)")
-    print(f"  Adjusted R² : {adj_r2:.4f}")
-
-regression_metrics(y_test, y_pred, n_features=X.shape[1], label="Linear Regression")
-```
-
----
-
-## 🛡️ Regularisation Techniques — Summary
-
-| Technique | Penalty | Formula | Feature Selection | Handles Multicollinearity | sklearn Class |
-|---|---|---|---|---|---|
-| **OLS (Plain LR)** | None | Σ(y−ŷ)² | ❌ | ❌ | `LinearRegression` |
-| **Ridge (L2)** | L2 | Σ(y−ŷ)² + λΣβ² | ❌ | ✅ | `Ridge` |
-| **Lasso (L1)** | L1 | Σ(y−ŷ)² + λΣ\|β\| | ✅ | Partial | `Lasso` |
-| **ElasticNet** | L1+L2 | Σ(y−ŷ)² + λ₁Σ\|β\|+ λ₂Σβ² | ✅ Partial | ✅ | `ElasticNet` |
-
----
-
-## ⚖️ Bias-Variance Tradeoff
-
-```
-Underfitting (High Bias):          Overfitting (High Variance):
-  Model is too simple               Model is too complex
-
-  True curve:  ╭─────╮             True curve:  ╭─────╮
-  Model:  ───────────── (flat)      Model: ╭─╮╭─╯╰─╮╰─╮
-
-  Training error: High              Training error: Very low
-  Test error:     High              Test error:     High
-  Fix: More features/complexity     Fix: Regularisation, simpler model
-
-Sweet spot (Just right):
-  Model captures the true pattern
-  Training ≈ Test error
-  Fix: Cross-validate, tune regularisation λ
-```
-
-```python
-from sklearn.model_selection import cross_val_score
-import numpy as np
-
-# Cross-validation to estimate generalisation
-cv_scores = cross_val_score(model, X, y, cv=10, scoring='r2')
-print(f"CV R² scores: {cv_scores.round(4)}")
-print(f"Mean R²     : {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")
-```
-
----
-
-## ✅ Advantages of Linear Regression
-
-| Advantage | Description |
+| ✅ Pros | ❌ Cons |
 |---|---|
-| **Simple and Interpretable** | Coefficients directly show the effect of each feature on the target |
-| **Computationally Efficient** | Trains fast — OLS has a closed-form solution; works on large datasets |
-| **Good Baseline** | Always worth trying first before complex models |
-| **Probabilistic Output** | Standard errors and confidence intervals available |
-| **Wide Availability** | Implemented in every ML library and statistical software |
-| **Feature Importance** | Coefficient magnitudes indicate feature importance |
-| **Foundation for Advanced Models** | Logistic regression, neural networks build on these concepts |
+| No training phase (lazy learner) | Slow prediction on large datasets |
+| Naturally handles multi-class | Sensitive to irrelevant features |
+| Simple and intuitive | High memory — stores all training data |
+| Non-parametric — no distribution assumption | Poor performance in high dimensions |
+
+**Best for:** Recommendation systems, image recognition, anomaly detection
 
 ---
 
-## ❌ Limitations of Linear Regression
+### 3. Naive Bayes
 
-| Limitation | Description | Fix |
+A **probabilistic classifier** based on Bayes' Theorem. Assumes all features are conditionally **independent** given the class — the "naive" assumption. Despite this simplification, it works remarkably well for text classification.
+
+**Bayes' Theorem:**
+```
+         P(X|y) · P(y)
+P(y|X) = ──────────────
+               P(X)
+
+Where:
+  P(y|X)  = posterior probability (class given features)
+  P(X|y)  = likelihood (features given class)
+  P(y)    = prior probability of class
+  P(X)    = evidence (constant for all classes)
+```
+
+**Variants:**
+
+| Variant | Distribution Assumed | Best For |
 |---|---|---|
-| **Assumes linearity** | Cannot model curves, interactions | Polynomial, Decision Tree |
-| **Sensitive to outliers** | Extreme values pull the line | Robust regression, remove outliers |
-| **Multicollinearity** | Correlated features distort coefficients | Ridge, VIF analysis |
-| **Requires feature engineering** | Raw data may need transformation | Log, sqrt, binning |
-| **Overfitting with many features** | Too many parameters relative to data | Ridge, Lasso, cross-validation |
-| **No automatic feature selection** | All features included by default | Lasso, Stepwise |
-| **Limited for complex patterns** | Cannot rival deep learning on images/text | ANN, CNN, BERT |
+| **GaussianNB** | Normal (Gaussian) | Continuous numeric features |
+| **MultinomialNB** | Multinomial | Word counts, text classification |
+| **BernoulliNB** | Bernoulli | Binary/boolean features |
+| **ComplementNB** | Complement of class | Imbalanced text datasets |
+
+```python
+from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.pipeline import Pipeline
+
+# ── For numeric features ──────────────────────────────────────
+gnb = GaussianNB()
+gnb.fit(X_train, y_train)
+print(f"GaussianNB Accuracy: {gnb.score(X_test, y_test)*100:.2f}%")
+
+# ── For text classification ───────────────────────────────────
+texts  = ["I love this product", "Terrible, waste of money",
+          "Excellent quality", "Do not buy this"]
+labels = [1, 0, 1, 0]   # 1=positive, 0=negative
+
+text_pipeline = Pipeline([
+    ('vectorizer', CountVectorizer()),
+    ('clf',        MultinomialNB())
+])
+text_pipeline.fit(texts, labels)
+print(text_pipeline.predict(["Great value for money"]))
+```
+
+**Best for:** Spam detection, sentiment analysis, text categorisation, real-time prediction
 
 ---
 
-## 🎯 When to Use Linear Regression
+### 4. Support Vector Machine (SVM)
 
-| ✅ Use Linear Regression When | ❌ Don't Use When |
-|---|---|
-| Relationship between X and Y is approximately linear | Clear non-linear relationship exists |
-| You need an interpretable model | Black-box accuracy is the priority |
-| Dataset is small to medium-sized | Input is images, audio, or raw text |
-| Fast training and prediction needed | Many complex feature interactions |
-| You need confidence intervals | Target is categorical (use logistic regression) |
-| Serving as a baseline model | Data has many outliers (use robust regression) |
-
----
-
-## 📊 Types Comparison Table
-
-| Type | Features | Regularisation | Feature Selection | Handles Multicollinearity | Best Use Case |
-|---|---|---|---|---|---|
-| **Simple LR** | 1 | None | N/A | N/A | One predictor, teaching |
-| **Multiple LR** | 2+ | None | No | No | Multi-feature prediction |
-| **Polynomial LR** | 1+ (expanded) | None | No | No | Curved relationships |
-| **Ridge (L2)** | 2+ | L2 | No | ✅ Yes | Correlated features |
-| **Lasso (L1)** | 2+ | L1 | ✅ Yes | Partial | High-dimensional, sparse |
-| **ElasticNet** | 2+ | L1+L2 | ✅ Partial | ✅ Yes | Correlated + sparse |
-| **Bayesian LR** | 2+ | Prior | No | Partial | Uncertainty required |
-| **Quantile LR** | 2+ | None | No | No | Skewed data, extremes |
-| **Robust LR** | 2+ | None | No | No | Data with outliers |
-| **Stepwise LR** | 2+ | None | ✅ Auto | No | Feature selection |
-
----
-
-## 🗺️ Decision Guide — Which Type to Use?
+SVMs find the **optimal hyperplane** that maximises the **margin** between classes. Data points closest to the hyperplane are called **support vectors**. Kernel functions extend SVM to non-linear decision boundaries.
 
 ```
-START HERE: What is your problem?
+Linear SVM:
+  Class A (●)    Class B (○)
+      ●               ○
+    ●   ●    ║    ○   ○
+      ●      ║  ○      ○
+             ║
+       ← margin →
+      hyperplane   (maximum margin = best generalisation)
+
+Kernel trick: projects data to higher dimensions where it becomes linearly separable
+```
+
+**Kernel types:**
+
+| Kernel | Formula | Use Case |
+|---|---|---|
+| **Linear** | K(x,y) = xᵀy | Linearly separable, high-dimensional (text) |
+| **RBF (Gaussian)** | K(x,y) = exp(-γ\|x-y\|²) | Most common; non-linear data |
+| **Polynomial** | K(x,y) = (γxᵀy + r)ᵈ | Polynomial decision boundaries |
+| **Sigmoid** | K(x,y) = tanh(γxᵀy + r) | Neural-network-like boundaries |
+
+```python
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV
+
+svm_pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('svm',    SVC(probability=True))
+])
+
+# Tune C (regularisation) and kernel
+param_grid = {
+    'svm__C'     : [0.1, 1, 10, 100],
+    'svm__kernel': ['linear', 'rbf', 'poly'],
+    'svm__gamma' : ['scale', 'auto']
+}
+grid_svm = GridSearchCV(svm_pipeline, param_grid, cv=5, n_jobs=-1)
+grid_svm.fit(X_train, y_train)
+
+print(f"Best params  : {grid_svm.best_params_}")
+print(f"Best CV score: {grid_svm.best_score_*100:.2f}%")
+```
+
+| ✅ Pros | ❌ Cons |
+|---|---|
+| Effective in high dimensions | Slow on large datasets |
+| Robust to outliers | Sensitive to feature scaling |
+| Works well for text classification | Choice of kernel can be tricky |
+| Maximum margin → good generalisation | Not probabilistic (need `probability=True`) |
+
+**Best for:** Image classification, text categorisation, bioinformatics, face detection
+
+---
+
+### 5. Decision Tree
+
+A **tree-structured model** that splits data recursively based on feature values to create a flowchart-like decision path. Highly interpretable — you can visualise the exact rules it uses.
+
+```
+                    ┌───────────────────┐
+                    │  Age > 30?        │
+                    └────────┬──────────┘
+                   YES       │        NO
+               ┌─────────────┘        └────────────────┐
+    ┌──────────────────┐           ┌──────────────────────┐
+    │  Income > 50K?   │           │  Student?             │
+    └────────┬─────────┘           └─────────┬────────────┘
+         YES │      NO                   YES │      NO
+      ┌──────┴──┐  ┌──────┐          ┌──────┴──┐  ┌──────┐
+      │ Buy=Yes │  │Buy=No│          │ Buy=No  │  │Buy=Yes│
+      └─────────┘  └──────┘          └─────────┘  └──────┘
+```
+
+**Splitting criteria:**
+
+| Criterion | Used For | Formula |
+|---|---|---|
+| **Gini Impurity** | Classification | `1 - Σpᵢ²` |
+| **Entropy / Info Gain** | Classification | `-Σpᵢ log₂(pᵢ)` |
+| **MSE / MAE** | Regression | Mean of squared/absolute errors |
+
+```python
+from sklearn.tree import DecisionTreeClassifier, export_text, plot_tree
+import matplotlib.pyplot as plt
+
+dt = DecisionTreeClassifier(
+    criterion='gini',
+    max_depth=5,          # prevent overfitting
+    min_samples_split=10, # min samples to split a node
+    min_samples_leaf=5,   # min samples in a leaf
+    random_state=42
+)
+dt.fit(X_train, y_train)
+
+# Visualise the tree
+plt.figure(figsize=(20, 10))
+plot_tree(dt, filled=True, feature_names=data.feature_names,
+          class_names=data.target_names, fontsize=8)
+plt.title("Decision Tree")
+plt.tight_layout()
+plt.show()
+
+# Text rules
+print(export_text(dt, feature_names=list(data.feature_names)))
+print(f"Train accuracy: {dt.score(X_train, y_train)*100:.2f}%")
+print(f"Test accuracy : {dt.score(X_test, y_test)*100:.2f}%")
+```
+
+| ✅ Pros | ❌ Cons |
+|---|---|
+| Highly interpretable (visual rules) | Prone to overfitting |
+| Handles mixed data types | Unstable — small data changes → different tree |
+| No feature scaling needed | Biased toward features with more categories |
+| Captures non-linear relationships | Deep trees are hard to interpret |
+
+**Best for:** Rule extraction, fraud rules, medical diagnosis explanation
+
+---
+
+## 1.3 Ensemble Models
+
+Ensemble methods **combine multiple base models** to produce a stronger, more robust predictor. They address the weakness of individual models (high variance or high bias).
+
+```
+Three ensemble strategies:
+
+BAGGING          │  BOOSTING          │  STACKING
+─────────────────┼────────────────────┼─────────────────────
+Train many models│  Train models      │  Train diverse base
+on random        │  sequentially;     │  models; use a
+subsamples;      │  each corrects     │  meta-model to
+average/vote     │  the last one's    │  combine their
+their outputs    │  errors            │  predictions
+                 │                    │
+Random Forest    │  AdaBoost, GBM,   │  Mix of models
+(parallel)       │  XGBoost, LGBM    │  + meta-learner
+                 │  (sequential)      │
+```
+
+---
+
+### 1. Random Forest
+
+An ensemble of many **decision trees** trained on random subsets of data (**bagging**) and random subsets of features. Predictions are made by majority vote (classification) or averaging (regression).
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
+
+rf = RandomForestClassifier(
+    n_estimators=200,       # number of trees
+    max_depth=None,         # grow fully — bagging prevents overfitting
+    max_features='sqrt',    # features per split = √(total features)
+    min_samples_leaf=2,
+    bootstrap=True,         # bagging (sampling with replacement)
+    oob_score=True,         # out-of-bag score estimate
+    n_jobs=-1,              # use all CPU cores
+    random_state=42
+)
+rf.fit(X_train, y_train)
+
+print(f"OOB Score    : {rf.oob_score_*100:.2f}%")
+print(f"Test Accuracy: {rf.score(X_test, y_test)*100:.2f}%")
+
+# Feature importances
+feat_imp = pd.Series(rf.feature_importances_,
+                     index=data.feature_names).sort_values(ascending=False)
+print("\nTop 5 Features:")
+print(feat_imp.head())
+```
+
+| ✅ Pros | ❌ Cons |
+|---|---|
+| Robust to overfitting | Less interpretable than single tree |
+| Handles missing values well | Slower than a single Decision Tree |
+| Provides feature importance | High memory usage (many trees) |
+| Works well out-of-the-box | Not ideal for very sparse data |
+
+**Best for:** General-purpose classification/regression, feature selection, fraud detection
+
+---
+
+### 2. Gradient Boosting (GBM)
+
+Builds trees **sequentially**, where each new tree corrects the **residual errors** of the previous ensemble. Uses gradient descent to minimise a loss function.
+
+```
+Iteration 1: Model₁ → predictions → errors (residuals)
+Iteration 2: Model₂ trains on residuals of Model₁
+Iteration 3: Model₃ trains on residuals of Model₁ + Model₂
+...
+Final:        F(x) = Model₁ + Model₂ + ... + Modelₙ  (weighted sum)
+```
+
+```python
+from sklearn.ensemble import GradientBoostingClassifier
+
+gbm = GradientBoostingClassifier(
+    n_estimators=200,       # number of boosting stages
+    learning_rate=0.05,     # shrinkage — controls contribution of each tree
+    max_depth=4,            # depth of each tree (typically 3-5)
+    subsample=0.8,          # fraction of samples per tree (stochastic GBM)
+    min_samples_leaf=10,
+    random_state=42
+)
+gbm.fit(X_train, y_train)
+print(f"GBM Accuracy: {gbm.score(X_test, y_test)*100:.2f}%")
+```
+
+---
+
+### 3. XGBoost
+
+**Extreme Gradient Boosting** — the most popular ML algorithm for structured/tabular data in competitions. Adds regularisation, parallel processing, and better handling of missing values on top of GBM.
+
+```python
+# pip install xgboost
+import xgboost as xgb
+from sklearn.metrics import accuracy_score
+
+xgb_model = xgb.XGBClassifier(
+    n_estimators=300,
+    learning_rate=0.05,
+    max_depth=6,
+    subsample=0.8,
+    colsample_bytree=0.8,   # features per tree
+    reg_alpha=0.1,          # L1 regularisation
+    reg_lambda=1.0,         # L2 regularisation
+    use_label_encoder=False,
+    eval_metric='logloss',
+    random_state=42,
+    n_jobs=-1
+)
+
+xgb_model.fit(
+    X_train, y_train,
+    eval_set=[(X_test, y_test)],
+    verbose=False
+)
+
+y_pred = xgb_model.predict(X_test)
+print(f"XGBoost Accuracy: {accuracy_score(y_test, y_pred)*100:.2f}%")
+```
+
+---
+
+### 4. LightGBM
+
+**Light Gradient Boosting Machine** — a faster, more memory-efficient alternative to XGBoost. Uses histogram-based splits and leaf-wise tree growth instead of level-wise.
+
+```python
+# pip install lightgbm
+import lightgbm as lgb
+
+lgbm = lgb.LGBMClassifier(
+    n_estimators=500,
+    learning_rate=0.05,
+    num_leaves=31,          # key parameter — controls complexity
+    max_depth=-1,
+    subsample=0.8,
+    colsample_bytree=0.8,
+    reg_alpha=0.1,
+    reg_lambda=0.1,
+    n_jobs=-1,
+    random_state=42
+)
+lgbm.fit(X_train, y_train,
+         eval_set=[(X_test, y_test)],
+         callbacks=[lgb.early_stopping(50), lgb.log_evaluation(100)])
+
+print(f"LightGBM Accuracy: {lgbm.score(X_test, y_test)*100:.2f}%")
+```
+
+| Model | Speed | Accuracy | Memory | Best For |
+|---|---|---|---|---|
+| **GBM** | Slow | High | Medium | Baseline boosting |
+| **XGBoost** | Fast | Very High | Medium | Kaggle competitions, structured data |
+| **LightGBM** | Very Fast | Very High | Low | Large datasets, high-cardinality |
+| **CatBoost** | Fast | Very High | Medium | Datasets with many categorical features |
+
+---
+
+### 5. AdaBoost
+
+**Adaptive Boosting** — trains weak learners (usually shallow trees) sequentially; misclassified samples get higher weights in the next round, forcing the next learner to focus on hard examples.
+
+```python
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
+
+ada = AdaBoostClassifier(
+    estimator=DecisionTreeClassifier(max_depth=1),  # stump
+    n_estimators=200,
+    learning_rate=0.5,
+    random_state=42
+)
+ada.fit(X_train, y_train)
+print(f"AdaBoost Accuracy: {ada.score(X_test, y_test)*100:.2f}%")
+```
+
+---
+
+### 6. Stacking & Voting
+
+```python
+from sklearn.ensemble import StackingClassifier, VotingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+
+# ── Voting Classifier ─────────────────────────────────────────
+# Hard voting: majority vote | Soft voting: average probabilities
+voting_clf = VotingClassifier(
+    estimators=[
+        ('lr',  LogisticRegression(max_iter=1000)),
+        ('svm', SVC(probability=True)),
+        ('rf',  RandomForestClassifier(n_estimators=100, random_state=42))
+    ],
+    voting='soft'
+)
+voting_clf.fit(X_train, y_train)
+print(f"Voting Accuracy: {voting_clf.score(X_test, y_test)*100:.2f}%")
+
+# ── Stacking Classifier ───────────────────────────────────────
+# Base models → meta-model learns to combine their predictions
+stacking_clf = StackingClassifier(
+    estimators=[
+        ('rf',  RandomForestClassifier(n_estimators=100, random_state=42)),
+        ('svm', SVC(probability=True, kernel='rbf')),
+        ('knn', KNeighborsClassifier(n_neighbors=5))
+    ],
+    final_estimator=LogisticRegression(),  # meta-model
+    cv=5
+)
+stacking_clf.fit(X_train, y_train)
+print(f"Stacking Accuracy: {stacking_clf.score(X_test, y_test)*100:.2f}%")
+```
+
+---
+
+## 🔵 Part 2 — Unsupervised Learning
+
+### 📌 What is Unsupervised Learning?
+
+Unsupervised learning works with **unlabelled data** to discover hidden structures, patterns, and groupings — without any pre-defined output variable to learn from.
+
+```
+Input: data without labels
+         ┌─────────────────────────────────┐
+         │  ●  ●    ○  ○     ▲  ▲         │
+         │    ●  ●○    ○  ▲     ▲         │
+         │  ●      ○      ▲               │
+         └─────────────────────────────────┘
+
+Output: discovered structure
+         Cluster 1: ●●● | Cluster 2: ○○○ | Cluster 3: ▲▲▲
+```
+
+---
+
+## 2.1 Clustering Models
+
+---
+
+### 1. K-Means Clustering
+
+Partitions data into **k clusters** by iteratively assigning points to the nearest centroid and updating centroids until convergence.
+
+```
+Algorithm:
+  Step 1: Randomly initialise k centroids
+  Step 2: Assign each point to nearest centroid (Euclidean distance)
+  Step 3: Recompute centroid as mean of assigned points
+  Step 4: Repeat Steps 2–3 until centroids stop moving
+```
+
+```python
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+import numpy as np
+
+# ── Determine optimal k via Elbow Method ──────────────────────
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+inertia = []
+K_range = range(1, 11)
+for k in K_range:
+    km = KMeans(n_clusters=k, random_state=42, n_init=10)
+    km.fit(X_scaled)
+    inertia.append(km.inertia_)
+
+plt.figure(figsize=(8, 5))
+plt.plot(K_range, inertia, 'bo-', linewidth=2)
+plt.xlabel('Number of clusters (k)')
+plt.ylabel('Inertia (within-cluster SSE)')
+plt.title('Elbow Method — Optimal k')
+plt.show()
+
+# ── Apply K-Means ──────────────────────────────────────────────
+km = KMeans(n_clusters=3, random_state=42, n_init=10, max_iter=300)
+labels = km.fit_predict(X_scaled)
+
+print(f"Cluster centres shape: {km.cluster_centers_.shape}")
+print(f"Cluster labels (first 10): {labels[:10]}")
+print(f"Inertia: {km.inertia_:.2f}")
+```
+
+| ✅ Pros | ❌ Cons |
+|---|---|
+| Fast and scalable | Must specify k in advance |
+| Simple to implement | Sensitive to initialisation and outliers |
+| Works well on spherical clusters | Assumes clusters are convex and similar size |
+
+---
+
+### 2. Hierarchical Clustering
+
+Builds a **tree of clusters (dendrogram)** by either merging (agglomerative) or splitting (divisive) clusters step by step. Does not require specifying k in advance.
+
+```python
+from sklearn.cluster import AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, linkage
+import matplotlib.pyplot as plt
+
+# ── Dendrogram to visualise cluster structure ─────────────────
+linkage_matrix = linkage(X_scaled[:50], method='ward')
+
+plt.figure(figsize=(12, 5))
+dendrogram(linkage_matrix)
+plt.title('Hierarchical Clustering Dendrogram')
+plt.xlabel('Sample Index')
+plt.ylabel('Euclidean Distance')
+plt.show()
+
+# ── Apply Agglomerative Clustering ────────────────────────────
+agg = AgglomerativeClustering(
+    n_clusters=3,
+    linkage='ward'     # ward, complete, average, single
+)
+labels_agg = agg.fit_predict(X_scaled)
+print(f"Cluster labels: {labels_agg[:10]}")
+```
+
+---
+
+### 3. DBSCAN
+
+**Density-Based Spatial Clustering of Applications with Noise.** Groups together points that are closely packed, and marks points in low-density regions as outliers. No need to specify k — discovers the number of clusters automatically.
+
+```
+Core point:    has ≥ min_samples neighbours within radius ε
+Border point:  within ε of a core point but fewer neighbours
+Noise point:   not a core or border point → labelled -1 (outlier)
+```
+
+```python
+from sklearn.cluster import DBSCAN
+
+dbscan = DBSCAN(
+    eps=0.5,            # neighbourhood radius
+    min_samples=5       # min points to form a dense region
+)
+labels_db = dbscan.fit_predict(X_scaled)
+
+n_clusters = len(set(labels_db)) - (1 if -1 in labels_db else 0)
+n_noise    = list(labels_db).count(-1)
+
+print(f"Clusters found : {n_clusters}")
+print(f"Noise points   : {n_noise}")
+print(f"Cluster labels : {set(labels_db)}")
+```
+
+| Algorithm | k Needed | Shape | Handles Outliers | Best For |
+|---|---|---|---|---|
+| **K-Means** | Yes | Spherical | No | Well-separated, equal-size clusters |
+| **Hierarchical** | No (cut dendrogram) | Any | No | Small datasets, unknown k |
+| **DBSCAN** | No | Arbitrary | Yes | Irregular shapes, noisy data |
+| **GMM** | Yes | Elliptical | Partial | Probabilistic cluster membership |
+
+---
+
+### 4. Gaussian Mixture Models (GMM)
+
+A **probabilistic clustering model** that assumes data is generated from a mixture of Gaussian distributions. Unlike K-Means, it gives **soft assignments** — each point has a probability of belonging to each cluster.
+
+```python
+from sklearn.mixture import GaussianMixture
+
+gmm = GaussianMixture(
+    n_components=3,
+    covariance_type='full',  # full, tied, diag, spherical
+    random_state=42,
+    max_iter=100
+)
+gmm.fit(X_scaled)
+
+labels_gmm   = gmm.predict(X_scaled)
+probabilities = gmm.predict_proba(X_scaled)
+
+print(f"Cluster labels (first 5): {labels_gmm[:5]}")
+print(f"Cluster probabilities    :\n{probabilities[:3].round(3)}")
+```
+
+---
+
+## 2.2 Dimensionality Reduction
+
+---
+
+### 1. PCA
+
+*(Covered in depth in the [PCA README](../pca_README.md))*
+
+```python
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+
+pca = PCA(n_components=0.95)   # retain 95% variance
+X_pca = pca.fit_transform(StandardScaler().fit_transform(X))
+print(f"Reduced to {pca.n_components_} components")
+```
+
+---
+
+### 2. t-SNE
+
+**t-Distributed Stochastic Neighbour Embedding** — a non-linear technique for **visualising** high-dimensional data in 2D/3D. Preserves local neighbourhood structure.
+
+```python
+from sklearn.manifold import TSNE
+import matplotlib.pyplot as plt
+
+tsne = TSNE(n_components=2, perplexity=30, random_state=42, n_iter=1000)
+X_tsne = tsne.fit_transform(StandardScaler().fit_transform(X))
+
+plt.figure(figsize=(8, 6))
+scatter = plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y, cmap='Set1', alpha=0.7)
+plt.colorbar(scatter)
+plt.title("t-SNE 2D Visualisation")
+plt.show()
+```
+
+> ⚠️ t-SNE is for **visualisation only** — do not use the t-SNE output as features for downstream models.
+
+---
+
+### 3. UMAP
+
+**Uniform Manifold Approximation and Projection** — faster than t-SNE and preserves both local and global structure better. Suitable for large datasets.
+
+```python
+# pip install umap-learn
+import umap
+
+reducer = umap.UMAP(n_components=2, random_state=42)
+X_umap  = reducer.fit_transform(StandardScaler().fit_transform(X))
+```
+
+---
+
+### 4. Autoencoders
+
+Neural network-based dimensionality reduction. Learns a compressed representation (latent space) by training to reconstruct its own input.
+
+```python
+import tensorflow as tf
+from tensorflow.keras import layers, Model
+
+# ── Encoder ───────────────────────────────────────────────────
+input_dim  = X.shape[1]
+latent_dim = 8
+
+inputs  = tf.keras.Input(shape=(input_dim,))
+encoded = layers.Dense(32, activation='relu')(inputs)
+encoded = layers.Dense(latent_dim, activation='relu')(encoded)   # bottleneck
+
+# ── Decoder ───────────────────────────────────────────────────
+decoded = layers.Dense(32, activation='relu')(encoded)
+decoded = layers.Dense(input_dim, activation='sigmoid')(decoded)
+
+# ── Autoencoder ───────────────────────────────────────────────
+autoencoder = Model(inputs, decoded)
+encoder     = Model(inputs, encoded)
+
+autoencoder.compile(optimizer='adam', loss='mse')
+autoencoder.fit(X_scaled, X_scaled, epochs=50, batch_size=32, verbose=0)
+
+X_encoded = encoder.predict(X_scaled)
+print(f"Compressed from {input_dim} → {latent_dim} dimensions")
+```
+
+---
+
+## 2.3 Association Rule Learning
+
+Discovers **co-occurrence patterns** in transactional data (e.g., market basket analysis).
+
+**Key metrics:**
+```
+Support    = P(A ∩ B)           = how often A and B appear together
+Confidence = P(A ∩ B) / P(A)   = how often B appears when A appears
+Lift       = Confidence / P(B)  = strength above chance (Lift > 1 = useful rule)
+```
+
+### 1. Apriori
+
+```python
+# pip install mlxtend
+from mlxtend.frequent_patterns import apriori, association_rules
+import pandas as pd
+
+# Transaction data (one-hot encoded)
+transactions = pd.DataFrame({
+    'Bread': [1,1,0,1,1,0],
+    'Milk' : [1,1,1,0,1,1],
+    'Eggs' : [0,1,1,0,0,1],
+    'Butter':[1,0,1,0,1,0]
+})
+
+# Find frequent itemsets
+frequent = apriori(transactions, min_support=0.5, use_colnames=True)
+
+# Generate rules
+rules = association_rules(frequent, metric='lift', min_threshold=1.0)
+rules = rules.sort_values('lift', ascending=False)
+print(rules[['antecedents','consequents','support','confidence','lift']].head())
+```
+
+### 2. FP-Growth
+
+Faster than Apriori — uses a compact **FP-tree** structure instead of candidate generation.
+
+```python
+from mlxtend.frequent_patterns import fpgrowth
+
+frequent_fp = fpgrowth(transactions, min_support=0.5, use_colnames=True)
+rules_fp    = association_rules(frequent_fp, metric='lift', min_threshold=1.0)
+print(rules_fp.head())
+```
+
+---
+
+## 🟡 Part 3 — Semi-Supervised Learning
+
+Semi-supervised learning uses a **small amount of labelled data** and a **large amount of unlabelled data** to train models — bridging supervised and unsupervised approaches.
+
+```
+Labelled data   :  100 examples  (small — expensive to label)
+Unlabelled data : 10,000 examples (large — cheap to collect)
+                       │
+              Semi-Supervised Model
+                       │
+            Better accuracy than supervised
+            trained on 100 labels alone
+```
+
+**Common approaches:**
+
+| Approach | How It Works |
+|---|---|
+| **Self-Training** | Train on labelled data → predict on unlabelled → add high-confidence predictions to training set → repeat |
+| **Label Propagation** | Spread labels from labelled to unlabelled via graph structure |
+| **GANs (semi-supervised)** | Discriminator classifies both real/fake AND predicts class |
+| **Pseudo-Labelling** | Teacher model generates "pseudo labels" for unlabelled data used by student model |
+
+```python
+from sklearn.semi_supervised import LabelPropagation, LabelSpreading
+import numpy as np
+
+# Create semi-supervised scenario: mark most labels as -1 (unknown)
+y_semi = y.copy()
+rng    = np.random.RandomState(42)
+mask   = rng.rand(len(y)) < 0.9   # 90% unlabelled
+y_semi[mask] = -1                  # -1 = unlabelled in sklearn
+
+# Label Propagation
+lp = LabelPropagation(kernel='rbf', gamma=20, max_iter=1000)
+lp.fit(X_scaled, y_semi)
+print(f"Label Propagation Accuracy: {lp.score(X_test, y_test)*100:.2f}%")
+
+# Label Spreading — more robust to noise
+ls = LabelSpreading(kernel='rbf', alpha=0.2)
+ls.fit(X_scaled, y_semi)
+print(f"Label Spreading Accuracy  : {ls.score(X_test, y_test)*100:.2f}%")
+```
+
+**Real-world use cases:** Medical image labelling (few labelled scans), NLP document classification, web content categorisation
+
+---
+
+## 🟣 Part 4 — Self-Supervised Learning
+
+Self-supervised learning generates **supervision signals from the data itself** — no human labelling required. The model learns rich representations by solving pretext tasks.
+
+```
+Pretext tasks (self-generated supervision):
+  ┌────────────────────────────────────────────────────┐
+  │  Text:  predict the next word given previous words  │  → GPT
+  │  Text:  predict masked words in a sentence          │  → BERT
+  │  Image: predict rotation angle of an image          │  → SimCLR
+  │  Image: predict relative position of patches        │  → MAE
+  │  Audio: predict next audio segment                  │  → wav2vec
+  └────────────────────────────────────────────────────┘
+           ↓
+  Pre-trained model with rich representations
+           ↓
+  Fine-tune on small labelled downstream task
+```
+
+**Key examples:**
+
+| Model | Domain | Pretext Task |
+|---|---|---|
+| **BERT** | NLP | Masked Language Modelling + Next Sentence Prediction |
+| **GPT** | NLP | Next token prediction (autoregressive) |
+| **SimCLR** | Computer Vision | Contrastive learning of augmented image pairs |
+| **MAE** | Computer Vision | Masked Autoencoder — reconstruct masked image patches |
+| **wav2vec 2.0** | Audio | Predict quantised audio representations |
+
+---
+
+## 🔴 Part 5 — Reinforcement Learning
+
+Reinforcement Learning (RL) trains an **agent** to make sequential decisions by interacting with an **environment**. The agent learns to maximise cumulative **reward** through trial and error — no labelled data required.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│   Agent ──── Action ──────────► Environment             │
+│     ▲                                │                  │
+│     │                         State + Reward            │
+│     └────────────────────────────────┘                  │
+│                                                         │
+│  Agent goal: maximise cumulative reward over time       │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Core components:**
+
+| Component | Description | Example |
+|---|---|---|
+| **Agent** | The learner/decision-maker | Robot, trading bot, game AI |
+| **Environment** | The world the agent interacts with | Game engine, stock market |
+| **State (s)** | Current situation of the environment | Board position, portfolio value |
+| **Action (a)** | What the agent can do | Move left, buy/sell, turn |
+| **Reward (r)** | Feedback signal from environment | +1 win, -1 loss, profit/loss |
+| **Policy (π)** | Agent's strategy: state → action | Neural network mapping |
+| **Value Function** | Expected future reward from a state | Q(s,a) or V(s) |
+
+**RL Algorithms:**
+
+| Algorithm | Type | Key Idea |
+|---|---|---|
+| **Q-Learning** | Model-free, value-based | Learn Q-value table directly |
+| **Deep Q-Network (DQN)** | Model-free, value-based | Q-Learning with deep neural network |
+| **SARSA** | Model-free, on-policy | Updates Q using next action taken |
+| **Policy Gradient (REINFORCE)** | Policy-based | Optimise policy directly |
+| **Actor-Critic (A2C/A3C)** | Policy + value | Actor (policy) + Critic (value function) |
+| **PPO** | Policy-based | Proximal Policy Optimisation — stable training |
+| **DDPG / TD3 / SAC** | Continuous action | Actor-Critic for continuous action spaces |
+
+```python
+# Simple Q-Learning example (grid world)
+import numpy as np
+
+# Q-table: states × actions
+n_states  = 16   # 4×4 grid
+n_actions = 4    # up, down, left, right
+Q = np.zeros((n_states, n_actions))
+
+# Hyperparameters
+alpha   = 0.1    # learning rate
+gamma   = 0.99   # discount factor
+epsilon = 0.1    # exploration rate (ε-greedy)
+
+def choose_action(state):
+    if np.random.rand() < epsilon:
+        return np.random.randint(n_actions)   # explore
+    return np.argmax(Q[state])                # exploit
+
+def update_q(s, a, r, s_next, done):
+    target = r if done else r + gamma * np.max(Q[s_next])
+    Q[s, a] += alpha * (target - Q[s, a])    # Bellman equation
+
+print("Q-Learning structure initialised.")
+print(f"Q-table shape: {Q.shape}")
+```
+
+**Real-world applications:**
+- 🎮 Game playing — AlphaGo, OpenAI Five (Dota 2), AlphaStar (StarCraft II)
+- 🤖 Robotics — manipulation, locomotion, navigation
+- 🚗 Autonomous driving — traffic signal control, path planning
+- 💹 Algorithmic trading — portfolio management
+- 💊 Healthcare — personalised treatment policies
+
+---
+
+## 🧠 Part 6 — Deep Learning Models
+
+Deep Learning uses **multi-layer neural networks** to learn hierarchical feature representations automatically from raw data.
+
+```
+Input Layer → Hidden Layer 1 → Hidden Layer 2 → ... → Output Layer
+  (features)    (low-level        (high-level         (predictions)
+                 patterns)         patterns)
+```
+
+---
+
+### 1. Artificial Neural Network (ANN)
+
+The foundational deep learning model. Layers of interconnected neurons learn complex, non-linear mappings from input to output via **backpropagation**.
+
+```python
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# ── Build ANN ─────────────────────────────────────────────────
+model_ann = models.Sequential([
+    layers.Input(shape=(X_train.shape[1],)),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.3),
+    layers.Dense(64,  activation='relu'),
+    layers.Dropout(0.3),
+    layers.Dense(32,  activation='relu'),
+    layers.Dense(1,   activation='sigmoid')   # binary classification
+])
+
+model_ann.compile(
+    optimizer='adam',
+    loss='binary_crossentropy',
+    metrics=['accuracy']
+)
+
+model_ann.summary()
+
+# Train
+history = model_ann.fit(
+    X_train, y_train,
+    epochs=50,
+    batch_size=32,
+    validation_split=0.2,
+    verbose=0
+)
+
+loss, acc = model_ann.evaluate(X_test, y_test, verbose=0)
+print(f"ANN Test Accuracy: {acc*100:.2f}%")
+```
+
+---
+
+### 2. Convolutional Neural Network (CNN)
+
+Specialised for **grid-structured data** (images, time-series). Uses convolutional filters to learn spatial patterns — edges, textures, objects — hierarchically.
+
+```
+Input Image (28×28)
+    │
+Conv Layer → detects edges and textures
+    │
+Pooling Layer → reduces spatial size, retains key features
+    │
+Conv Layer → detects higher-level patterns (shapes, objects)
+    │
+Flatten → Dense Layers → Output (class probabilities)
+```
+
+```python
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# ── CNN for image classification ──────────────────────────────
+model_cnn = models.Sequential([
+    layers.Input(shape=(28, 28, 1)),          # height, width, channels
+    layers.Conv2D(32, (3,3), activation='relu', padding='same'),
+    layers.MaxPooling2D((2,2)),
+    layers.Conv2D(64, (3,3), activation='relu', padding='same'),
+    layers.MaxPooling2D((2,2)),
+    layers.Conv2D(64, (3,3), activation='relu'),
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.5),
+    layers.Dense(10, activation='softmax')    # 10 classes
+])
+
+model_cnn.compile(optimizer='adam',
+                  loss='sparse_categorical_crossentropy',
+                  metrics=['accuracy'])
+model_cnn.summary()
+```
+
+**Applications:** Image classification, object detection, face recognition, medical imaging
+
+---
+
+### 3. Recurrent Neural Network (RNN)
+
+Designed for **sequential data** (text, time-series, audio). Has a hidden state that carries information from previous time steps — enabling memory of past context.
+
+```
+Sequence: [x₁, x₂, x₃, x₄, x₅]
+
+RNN unfolds over time:
+  h₁ = f(x₁, h₀)
+  h₂ = f(x₂, h₁)
+  h₃ = f(x₃, h₂)  ← hidden state carries past context
+  ...
+  y  = output from final hidden state
+```
+
+> ⚠️ Vanilla RNNs suffer from **vanishing gradients** on long sequences — use LSTM or GRU instead.
+
+---
+
+### 4. LSTM & GRU
+
+**Long Short-Term Memory (LSTM)** and **Gated Recurrent Unit (GRU)** solve the vanishing gradient problem with gating mechanisms that control what information to remember or forget.
+
+```python
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# ── LSTM for sequence classification ──────────────────────────
+model_lstm = models.Sequential([
+    layers.Input(shape=(100, 50)),           # (timesteps, features)
+    layers.LSTM(128, return_sequences=True),
+    layers.LSTM(64),
+    layers.Dense(32, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
+model_lstm.compile(optimizer='adam', loss='binary_crossentropy',
+                   metrics=['accuracy'])
+
+# ── GRU — lighter alternative to LSTM ─────────────────────────
+model_gru = models.Sequential([
+    layers.Input(shape=(100, 50)),
+    layers.GRU(128, return_sequences=True),
+    layers.GRU(64),
+    layers.Dense(1, activation='sigmoid')
+])
+```
+
+| Model | Gates | Parameters | Speed | Best For |
+|---|---|---|---|---|
+| **RNN** | None | Few | Fast | Very short sequences |
+| **LSTM** | 3 (input, forget, output) | Many | Slower | Long sequences, NLP |
+| **GRU** | 2 (reset, update) | Medium | Medium | Good LSTM alternative |
+
+---
+
+### 5. Transformer
+
+The **dominant architecture in modern AI**. Uses self-attention mechanisms to capture relationships between all positions in a sequence simultaneously — no recurrence needed. Foundation of BERT, GPT, T5, and all large language models.
+
+```
+Input tokens: [The, cat, sat, on, mat]
+                │
+        Self-Attention:
+        each token attends to ALL other tokens simultaneously
+                │
+        "cat" strongly attends to "sat" and "mat"
+        "on"  attends most to "sat" and "mat"
+                │
+        Multi-Head Attention (parallel attention heads)
+                │
+        Feed Forward Layer
+                │
+        Output: context-rich representations
+```
+
+```python
+import tensorflow as tf
+from tensorflow.keras import layers
+
+class TransformerBlock(tf.keras.layers.Layer):
+    def __init__(self, embed_dim, num_heads, ff_dim, dropout=0.1):
+        super().__init__()
+        self.att   = layers.MultiHeadAttention(num_heads=num_heads,
+                                               key_dim=embed_dim)
+        self.ffn   = tf.keras.Sequential([
+            layers.Dense(ff_dim, activation='relu'),
+            layers.Dense(embed_dim)
+        ])
+        self.norm1 = layers.LayerNormalization()
+        self.norm2 = layers.LayerNormalization()
+        self.drop1 = layers.Dropout(dropout)
+        self.drop2 = layers.Dropout(dropout)
+
+    def call(self, x, training=False):
+        attn_out = self.att(x, x)
+        x = self.norm1(x + self.drop1(attn_out, training=training))
+        ffn_out = self.ffn(x)
+        x = self.norm2(x + self.drop2(ffn_out, training=training))
+        return x
+```
+
+**Famous Transformer models:** BERT, GPT-4, T5, LLaMA, Claude, Gemini, Vision Transformer (ViT), Whisper (audio), DALL-E (image)
+
+---
+
+### 6. Generative Adversarial Network (GAN)
+
+Two networks compete: a **Generator** tries to create fake data indistinguishable from real data; a **Discriminator** tries to tell real from fake. Through this adversarial training, the generator learns to produce highly realistic synthetic data.
+
+```
+GENERATOR:          Random noise → Fake data (images, text, etc.)
+DISCRIMINATOR:      Real/Fake data → Real or Fake?
+
+Training loop:
+  1. Generator creates fake sample
+  2. Discriminator sees real + fake samples, outputs probability
+  3. Generator trained to fool Discriminator
+  4. Discriminator trained to detect fakes
+  5. Repeat → Generator improves until outputs are photo-realistic
+```
+
+```python
+import tensorflow as tf
+from tensorflow.keras import layers
+
+def build_generator(latent_dim=100, output_dim=784):
+    return tf.keras.Sequential([
+        layers.Dense(128, activation='relu', input_shape=(latent_dim,)),
+        layers.BatchNormalization(),
+        layers.Dense(256, activation='relu'),
+        layers.BatchNormalization(),
+        layers.Dense(output_dim, activation='tanh')    # image pixels
+    ])
+
+def build_discriminator(input_dim=784):
+    return tf.keras.Sequential([
+        layers.Dense(256, activation='leaky_relu', input_shape=(input_dim,)),
+        layers.Dropout(0.3),
+        layers.Dense(128, activation='leaky_relu'),
+        layers.Dropout(0.3),
+        layers.Dense(1, activation='sigmoid')     # real (1) or fake (0)
+    ])
+
+generator     = build_generator()
+discriminator = build_discriminator()
+print("Generator    :", generator.count_params(), "parameters")
+print("Discriminator:", discriminator.count_params(), "parameters")
+```
+
+**Applications:** Image synthesis, data augmentation, super-resolution, style transfer, deepfakes (detection)
+
+---
+
+## 🗺️ Model Selection Guide
+
+```
+WHAT KIND OF OUTPUT DO YOU NEED?
 │
-├── Only ONE input feature?
-│       └──► Simple Linear Regression
+├── Continuous number (price, score, temperature)?
+│       └──► REGRESSION
+│               ├── Linear data?       → Linear Regression
+│               ├── Many features?     → Ridge / Lasso
+│               ├── Non-linear?        → SVR, GBM, XGBoost, Random Forest
+│               └── Complex patterns?  → ANN, Deep Learning
 │
-├── TWO OR MORE input features?
-│       │
-│       ├── Any risk of overfitting / too many features?
-│       │       │
-│       │       ├── Features are correlated (multicollinearity)?
-│       │       │       └──► Ridge Regression (L2)
-│       │       │
-│       │       ├── Need automatic feature selection?
-│       │       │       └──► Lasso Regression (L1)
-│       │       │
-│       │       └── Both correlated AND need selection?
-│       │               └──► ElasticNet Regression
-│       │
-│       └── No overfitting concern?
-│               └──► Multiple Linear Regression (OLS)
+├── Category / Class (yes/no, A/B/C)?
+│       └──► CLASSIFICATION
+│               ├── Linear boundary?   → Logistic Regression, SVM (linear)
+│               ├── Probabilistic?     → Naive Bayes
+│               ├── Instance-based?    → KNN
+│               ├── Rule-based?        → Decision Tree
+│               ├── Best accuracy?     → XGBoost, LightGBM, Random Forest
+│               └── Image/text/seq?    → CNN, LSTM, Transformer
 │
-├── Is the relationship NON-LINEAR / CURVED?
-│       └──► Polynomial Regression (degree 2 or 3)
+├── No labels — discover structure?
+│       └──► UNSUPERVISED
+│               ├── Group similar items?      → K-Means, DBSCAN, GMM
+│               ├── Visualise in 2D?          → t-SNE, UMAP
+│               ├── Compress features?        → PCA, Autoencoder
+│               └── Find item associations?   → Apriori, FP-Growth
 │
-├── DATA HAS OUTLIERS?
-│       └──► Robust Regression (Huber or RANSAC)
+├── Learn from interaction / decisions?
+│       └──► REINFORCEMENT LEARNING
+│               ├── Discrete actions?  → DQN, Q-Learning
+│               └── Continuous actions?→ PPO, SAC, DDPG
 │
-├── NEED UNCERTAINTY ESTIMATES or confidence intervals?
-│       └──► Bayesian Linear Regression
-│
-├── DATA IS SKEWED or need to predict extremes?
-│       └──► Quantile Regression
-│
-└── NEED TO IDENTIFY MOST SIGNIFICANT FEATURES automatically?
-        └──► Stepwise Regression (Backward Elimination)
+└── Sequential / text / image / audio data?
+        └──► DEEP LEARNING
+                ├── Images           → CNN
+                ├── Sequences, text  → LSTM, GRU, Transformer
+                ├── Tabular data     → ANN / XGBoost (often better)
+                └── Generation       → GAN, Diffusion Models
+```
+
+---
+
+## 📋 Algorithms by Problem Type
+
+| Problem | Recommended Algorithms |
+|---|---|
+| **House price prediction** | Linear Regression, Ridge, XGBoost, Random Forest |
+| **Email spam detection** | Naive Bayes, Logistic Regression, SVM |
+| **Image classification** | CNN, ResNet, EfficientNet, Vision Transformer |
+| **Customer segmentation** | K-Means, DBSCAN, Hierarchical Clustering, GMM |
+| **Fraud detection** | Isolation Forest, XGBoost, Random Forest, Autoencoders |
+| **Sentiment analysis** | Logistic Regression, LSTM, BERT (Transformer) |
+| **Recommendation system** | Collaborative Filtering, Matrix Factorisation, KNN |
+| **Time-series forecasting** | LSTM, GRU, Transformer, XGBoost, Prophet |
+| **Object detection** | YOLO, Faster R-CNN (CNN-based) |
+| **Text generation** | GPT (Transformer), LSTM |
+| **Anomaly detection** | DBSCAN, Isolation Forest, Autoencoders, LOF |
+| **Game playing** | DQN, PPO, AlphaZero (RL) |
+| **Market basket analysis** | Apriori, FP-Growth |
+| **Dimensionality reduction** | PCA, t-SNE, UMAP, Autoencoder |
+
+---
+
+## 📊 Comparison of All Models
+
+| Model | Type | Output | Training Speed | Prediction Speed | Interpretable | Handles Non-linearity |
+|---|---|---|---|---|---|---|
+| Linear Regression | Supervised | Continuous | Very Fast | Very Fast | ✅ Yes | ❌ No |
+| Ridge / Lasso | Supervised | Continuous | Fast | Fast | ✅ Yes | ❌ No |
+| Logistic Regression | Supervised | Class | Fast | Fast | ✅ Yes | ❌ No |
+| KNN | Supervised | Class/Cont. | None (lazy) | Slow | Partial | ✅ Yes |
+| Naive Bayes | Supervised | Class | Very Fast | Very Fast | ✅ Yes | ❌ No |
+| SVM | Supervised | Class/Cont. | Slow | Medium | ❌ No | ✅ Yes (kernel) |
+| Decision Tree | Supervised | Class/Cont. | Fast | Very Fast | ✅ Yes | ✅ Yes |
+| Random Forest | Supervised | Class/Cont. | Medium | Medium | Partial | ✅ Yes |
+| XGBoost | Supervised | Class/Cont. | Fast | Fast | Partial | ✅ Yes |
+| LightGBM | Supervised | Class/Cont. | Very Fast | Very Fast | Partial | ✅ Yes |
+| K-Means | Unsupervised | Clusters | Fast | Fast | ✅ Yes | ❌ No |
+| DBSCAN | Unsupervised | Clusters | Medium | Slow | Partial | ✅ Yes |
+| PCA | Unsupervised | Components | Fast | Fast | Partial | ❌ No |
+| t-SNE | Unsupervised | 2D/3D | Slow | — | ❌ No | ✅ Yes |
+| ANN / MLP | Deep Learning | Any | Slow | Fast | ❌ No | ✅ Yes |
+| CNN | Deep Learning | Class/Det. | Very Slow | Fast | ❌ No | ✅ Yes |
+| LSTM / GRU | Deep Learning | Sequence | Very Slow | Medium | ❌ No | ✅ Yes |
+| Transformer | Deep Learning | Any | Very Slow | Medium | ❌ No | ✅ Yes |
+
+---
+
+## 📏 Evaluation Metrics Quick Reference
+
+### Regression Metrics
+
+| Metric | Formula | Meaning |
+|---|---|---|
+| **MAE** | Σ\|y - ŷ\| / n | Average absolute error |
+| **MSE** | Σ(y - ŷ)² / n | Penalises large errors more |
+| **RMSE** | √MSE | Same unit as target — interpretable |
+| **R² Score** | 1 - SS_res/SS_tot | Proportion of variance explained (1 = perfect) |
+
+```python
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import numpy as np
+
+mae  = mean_absolute_error(y_test, y_pred)
+mse  = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+r2   = r2_score(y_test, y_pred)
+print(f"MAE: {mae:.4f} | MSE: {mse:.4f} | RMSE: {rmse:.4f} | R²: {r2:.4f}")
+```
+
+### Classification Metrics
+
+| Metric | Formula | When to Use |
+|---|---|---|
+| **Accuracy** | (TP+TN)/(TP+TN+FP+FN) | Balanced classes |
+| **Precision** | TP/(TP+FP) | Minimise false positives (spam) |
+| **Recall** | TP/(TP+FN) | Minimise false negatives (cancer detection) |
+| **F1-Score** | 2×(P×R)/(P+R) | Imbalanced classes |
+| **AUC-ROC** | Area under ROC curve | Overall model discrimination ability |
+
+```python
+from sklearn.metrics import (accuracy_score, precision_score, recall_score,
+                             f1_score, roc_auc_score, classification_report)
+
+print(f"Accuracy : {accuracy_score(y_test, y_pred)*100:.2f}%")
+print(f"Precision: {precision_score(y_test, y_pred, average='weighted'):.4f}")
+print(f"Recall   : {recall_score(y_test, y_pred, average='weighted'):.4f}")
+print(f"F1-Score : {f1_score(y_test, y_pred, average='weighted'):.4f}")
+print(f"\n{classification_report(y_test, y_pred)}")
+```
+
+### Clustering Metrics
+
+| Metric | Range | Meaning |
+|---|---|---|
+| **Silhouette Score** | -1 to 1 | Cohesion vs separation (higher = better) |
+| **Davies-Bouldin Index** | 0 to ∞ | Cluster compactness (lower = better) |
+| **Inertia** | 0 to ∞ | Within-cluster sum of squares (lower = better) |
+
+```python
+from sklearn.metrics import silhouette_score, davies_bouldin_score
+
+sil = silhouette_score(X_scaled, labels)
+dbi = davies_bouldin_score(X_scaled, labels)
+print(f"Silhouette Score   : {sil:.4f}")
+print(f"Davies-Bouldin Index: {dbi:.4f}")
 ```
 
 ---
 
 ## 🔑 Key Takeaways
 
-- ✅ **Linear Regression** models a straight-line relationship between input features and a continuous output variable
-- 📐 The **best-fit line** is found by minimising the **Sum of Squared Residuals** using the Ordinary Least Squares (OLS) method
-- 🔢 The **hypothesis function** h(x) = β₀ + β₁x encodes all predictions; β₀ is the intercept, β₁ is the slope
-- ⚠️ Linear regression relies on **7 key assumptions** — always verify linearity, homoscedasticity, and no multicollinearity
-- 📚 There are **10 main types** — from Simple and Multiple LR to regularised versions (Ridge, Lasso, ElasticNet) and specialised ones (Bayesian, Quantile, Robust, Stepwise)
-- 💰 The **cost function (MSE)** measures prediction error; **Gradient Descent** minimises it iteratively
-- 🛡️ **Ridge** shrinks all coefficients; **Lasso** can zero them out (feature selection); **ElasticNet** combines both
-- 📊 Always evaluate with **multiple metrics** — R², Adjusted R², RMSE, MAE — not just one
-- ⚖️ Watch the **bias-variance tradeoff** — use regularisation to prevent overfitting
-- 🚀 Linear Regression is the **starting point** for every ML project — always build it as your baseline before trying complex models
+- ✅ ML is broadly divided into **Supervised, Unsupervised, Semi-Supervised, Self-Supervised, and Reinforcement Learning** — each for a different data and problem context
+- 📈 **Regression** predicts continuous values; **Classification** predicts discrete categories
+- 🌲 **Ensemble methods** (Random Forest, XGBoost, LightGBM) consistently outperform single models on structured/tabular data
+- 🔵 **Clustering** discovers hidden groupings; **Dimensionality Reduction** compresses feature spaces
+- 🤖 **Reinforcement Learning** trains agents via rewards without labelled data — ideal for sequential decision-making
+- 🧠 **Deep Learning** (CNN, LSTM, Transformer) excels at images, text, and sequential data but requires large datasets
+- 🏆 **Transformers** are the dominant architecture in modern AI — powering all large language models
+- ⚖️ **No single best model** exists — always validate with cross-validation and compare multiple algorithms
+- 🔧 **Always preprocess** — scale features, handle missing values, remove outliers before training
+- 📊 Choose **evaluation metrics based on the problem** — accuracy for balanced classes, F1/AUC for imbalanced, RMSE for regression
 
 ---
 
 ## 🛠️ Prerequisites
 
 ```bash
-pip install numpy pandas scikit-learn matplotlib seaborn statsmodels scipy
+pip install numpy pandas scikit-learn matplotlib seaborn xgboost lightgbm tensorflow mlxtend umap-learn
 ```
 
-**All imports used in this guide:**
+**Core imports used across this guide:**
 
 ```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy import stats
 
 # Scikit-learn
-from sklearn.linear_model import (
-    LinearRegression,
-    Ridge, RidgeCV,
-    Lasso, LassoCV,
-    ElasticNet, ElasticNetCV,
-    BayesianRidge,
-    HuberRegressor,
-    RANSACRegressor,
-    TheilSenRegressor,
-    SGDRegressor
-)
-from sklearn.preprocessing import PolynomialFeatures, StandardScaler
-from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.datasets import load_diabetes, fetch_california_housing
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import (accuracy_score, classification_report,
+                             mean_squared_error, r2_score, silhouette_score)
 
-# Statsmodels
-import statsmodels.api as sm
-import statsmodels.formula.api as smf
-from statsmodels.stats.stattools import durbin_watson
-from statsmodels.stats.outliers_influence import variance_inflation_factor
+# Supervised — Regression
+from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
+from sklearn.svm import SVR
+
+# Supervised — Classification
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB, MultinomialNB
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+
+# Ensemble
+from sklearn.ensemble import (RandomForestClassifier, GradientBoostingClassifier,
+                              AdaBoostClassifier, VotingClassifier, StackingClassifier)
+import xgboost as xgb
+import lightgbm as lgb
+
+# Unsupervised
+from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering
+from sklearn.mixture import GaussianMixture
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
+
+# Semi-supervised
+from sklearn.semi_supervised import LabelPropagation, LabelSpreading
+
+# Deep Learning
+import tensorflow as tf
+from tensorflow.keras import layers, models
 ```
 
 ---
 
 ## 📚 Further Reading
 
-- [Scikit-learn: Linear Models](https://scikit-learn.org/stable/modules/linear_model.html)
-- [Gradient Descent in Linear Regression — GeeksforGeeks](https://www.geeksforgeeks.org/machine-learning/gradient-descent-in-linear-regression/)
-- [Ridge Regression from Scratch — GeeksforGeeks](https://www.geeksforgeeks.org/machine-learning/implementation-of-ridge-regression-from-scratch-using-python/)
-- [Lasso Regression from Scratch — GeeksforGeeks](https://www.geeksforgeeks.org/machine-learning/implementation-of-lasso-regression-from-scratch-using-python/)
-- [ElasticNet Regression — GeeksforGeeks](https://www.geeksforgeeks.org/machine-learning/implementation-of-elastic-net-regression-from-scratch/)
-- [Multiple Linear Regression — GeeksforGeeks](https://www.geeksforgeeks.org/machine-learning/ml-multiple-linear-regression-using-python/)
-- [Multicollinearity in Regression — GeeksforGeeks](https://www.geeksforgeeks.org/machine-learning/multicollinearity-in-regression-analysis/)
-- [Statsmodels: Regression](https://www.statsmodels.org/stable/regression.html)
-- [ML Models and Types](../ml_models_types_README.md)
+- [Scikit-learn: Supervised Learning](https://scikit-learn.org/stable/supervised_learning.html)
+- [Scikit-learn: Unsupervised Learning](https://scikit-learn.org/stable/unsupervised_learning.html)
+- [XGBoost Documentation](https://xgboost.readthedocs.io/)
+- [LightGBM Documentation](https://lightgbm.readthedocs.io/)
+- [TensorFlow / Keras Documentation](https://www.tensorflow.org/api_docs)
+- [Reinforcement Learning — OpenAI Gymnasium](https://gymnasium.farama.org/)
+- [Hugging Face Transformers](https://huggingface.co/docs/transformers/)
+- [Principal Component Analysis (PCA)](../pca_README.md)
 - [Feature Transformation Techniques](../feature_transformation_README.md)
+- [Handling Missing Data](../handling_missing_data_README.md)
 - [Outlier Detection and Removal](../outlier_detection_README.md)
-
----
